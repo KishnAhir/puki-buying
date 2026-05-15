@@ -110,47 +110,130 @@ tr:hover td{background:#FAFAFA}
 <body>
 
 <style>
-#lockscreen{position:fixed;inset:0;background:var(--navy);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column;gap:20px}
+#lockscreen{position:fixed;inset:0;background:linear-gradient(135deg,#1A1A2E,#0F3460);display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column}
 #lockscreen.hidden{display:none}
-.lock-card{background:#fff;border-radius:20px;padding:40px;text-align:center;max-width:360px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.lock-logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:24px;color:var(--navy);margin-bottom:6px}.lock-logo span{color:var(--red)}
-.lock-sub{font-size:13px;color:#888;margin-bottom:28px}
-.lock-icon{font-size:48px;margin-bottom:16px}
-.lock-input{width:100%;padding:14px;border:2px solid #E5E7EB;border-radius:10px;font-size:16px;outline:none;text-align:center;letter-spacing:4px;font-family:'Inter',sans-serif;margin-bottom:12px}
+.lock-card{background:#fff;border-radius:20px;padding:40px;text-align:center;max-width:380px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.lock-logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:24px;color:#1A1A2E;margin-bottom:4px}.lock-logo span{color:#E94560}
+.lock-sub{font-size:13px;color:#888;margin-bottom:24px}
+.lock-icon{font-size:48px;margin-bottom:12px}
+.lock-step{font-size:11px;font-weight:700;color:#E94560;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;font-family:'Poppins',sans-serif}
+.lock-input{width:100%;padding:14px;border:2px solid #E5E7EB;border-radius:10px;font-size:16px;outline:none;text-align:center;font-family:'Inter',sans-serif;margin-bottom:12px;transition:.2s}
 .lock-input:focus{border-color:#E94560}
-.lock-btn{width:100%;padding:14px;background:#E94560;color:#fff;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;cursor:pointer}
+.lock-input.code-input{letter-spacing:8px;font-weight:700;font-size:24px}
+.lock-btn{width:100%;padding:14px;background:#E94560;color:#fff;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;cursor:pointer;transition:.2s;margin-bottom:8px}
 .lock-btn:hover{background:#c73652}
+.lock-btn:disabled{background:#ccc;cursor:not-allowed}
 .lock-error{color:#E94560;font-size:13px;margin-top:8px;display:none}
+.lock-success{color:#27AE60;font-size:13px;margin-top:8px;display:none}
+#step1{display:block}
+#step2{display:none}
+.lock-timer{font-size:12px;color:#888;margin-top:8px}
 </style>
 <div id="lockscreen">
   <div class="lock-card">
-    <div class="lock-icon">🔒</div>
-    <div class="lock-logo">PUKI <span>Devices</span></div>
-    <div class="lock-sub">Private Business Dashboard</div>
-    <input type="password" class="lock-input" id="pwInput" placeholder="Enter password" onkeypress="if(event.key==='Enter')checkPw()">
-    <button class="lock-btn" onclick="checkPw()">Unlock Dashboard</button>
-    <div class="lock-error" id="pwError">❌ Wrong password. Try again.</div>
+    <!-- STEP 1: Password -->
+    <div id="step1">
+      <div class="lock-icon">🔒</div>
+      <div class="lock-logo">PUKI <span>Devices</span></div>
+      <div class="lock-sub">Private Business Dashboard</div>
+      <div class="lock-step">Step 1 of 2 — Enter Password</div>
+      <input type="password" class="lock-input" id="pwInput" placeholder="Enter your password" onkeypress="if(event.key==='Enter')checkPassword()">
+      <button class="lock-btn" id="pwBtn" onclick="checkPassword()">Continue →</button>
+      <div class="lock-error" id="pwError">❌ Wrong password. Try again.</div>
+    </div>
+    <!-- STEP 2: Email Code -->
+    <div id="step2">
+      <div class="lock-icon">📧</div>
+      <div class="lock-logo">PUKI <span>Devices</span></div>
+      <div class="lock-sub">Check your email for the code</div>
+      <div class="lock-step">Step 2 of 2 — Enter Email Code</div>
+      <input type="text" class="lock-input code-input" id="codeInput" placeholder="000000" maxlength="6" onkeypress="if(event.key==='Enter')checkCode()">
+      <button class="lock-btn" id="codeBtn" onclick="checkCode()">Unlock Dashboard 🔓</button>
+      <button class="lock-btn" style="background:#6B7280;margin-top:4px" onclick="resendCode()">Resend Code</button>
+      <div class="lock-error" id="codeError">❌ Wrong code. Try again.</div>
+      <div class="lock-success" id="codeSuccess">✅ Code sent to your email!</div>
+      <div class="lock-timer" id="timer"></div>
+    </div>
   </div>
 </div>
 <script>
-(function(){
-  const SESSION_KEY='puki_auth';
-  const PASS='puki0456@uk';
-  if(sessionStorage.getItem(SESSION_KEY)==='true'){
-    document.getElementById('lockscreen').classList.add('hidden');
+const PASS = 'puki0456@uk';
+const WEBHOOK = 'https://dealfinder-ai.app.n8n.cloud/webhook/puki-2fa';
+const SESSION_KEY = 'puki_auth_v2';
+let currentCode = null;
+let codeExpiry = null;
+
+// Check existing session
+if(sessionStorage.getItem(SESSION_KEY) === 'true'){
+  document.getElementById('lockscreen').classList.add('hidden');
+}
+
+async function checkPassword(){
+  const pw = document.getElementById('pwInput').value;
+  if(pw === PASS){
+    document.getElementById('pwBtn').disabled = true;
+    document.getElementById('pwBtn').textContent = 'Sending code...';
+    await sendCode();
+  } else {
+    document.getElementById('pwError').style.display = 'block';
+    document.getElementById('pwInput').value = '';
+    document.getElementById('pwInput').focus();
   }
-  window.checkPw=function(){
-    const val=document.getElementById('pwInput').value;
-    if(val===PASS){
-      sessionStorage.setItem(SESSION_KEY,'true');
-      document.getElementById('lockscreen').classList.add('hidden');
-    } else {
-      document.getElementById('pwError').style.display='block';
-      document.getElementById('pwInput').value='';
-      document.getElementById('pwInput').focus();
-    }
-  };
-})();
+}
+
+async function sendCode(){
+  try {
+    const res = await fetch(WEBHOOK, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({action: 'send_code'})
+    });
+    const data = await res.json();
+    currentCode = data.code;
+    codeExpiry = data.expiry;
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+    document.getElementById('codeSuccess').style.display = 'block';
+    startTimer();
+  } catch(e){
+    document.getElementById('pwBtn').disabled = false;
+    document.getElementById('pwBtn').textContent = 'Continue →';
+    document.getElementById('pwError').style.display = 'block';
+    document.getElementById('pwError').textContent = '❌ Error sending code. Try again.';
+  }
+}
+
+function checkCode(){
+  const entered = document.getElementById('codeInput').value;
+  if(Date.now() > codeExpiry){
+    document.getElementById('codeError').textContent = '❌ Code expired. Request a new one.';
+    document.getElementById('codeError').style.display = 'block';
+    return;
+  }
+  if(entered === currentCode){
+    sessionStorage.setItem(SESSION_KEY, 'true');
+    document.getElementById('lockscreen').classList.add('hidden');
+  } else {
+    document.getElementById('codeError').style.display = 'block';
+    document.getElementById('codeInput').value = '';
+    document.getElementById('codeInput').focus();
+  }
+}
+
+async function resendCode(){
+  document.getElementById('codeSuccess').style.display = 'none';
+  await sendCode();
+}
+
+function startTimer(){
+  const interval = setInterval(() => {
+    const remaining = Math.max(0, Math.floor((codeExpiry - Date.now()) / 1000));
+    const mins = Math.floor(remaining / 60);
+    const secs = remaining % 60;
+    document.getElementById('timer').textContent = `Code expires in ${mins}:${secs.toString().padStart(2,'0')}`;
+    if(remaining === 0) clearInterval(interval);
+  }, 1000);
+}
 </script>
 
 
