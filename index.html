@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sell Your iPhone | PUKI Devices — Fast Cash, Free Collection</title>
+<meta name="description" content="Sell your iPhone today for instant cash. Any model, any condition. Free Royal Mail label, same-day payment. Trusted UK iPhone buyer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --navy:#1A1A2E;--red:#E94560;--blue:#0F3460;
+  --white:#fff;--text:#1A1A1A;--green:#27AE60;
+  --orange:#F39C12;--light:#F7F8FC;--border:#E5E7EB;
+  --muted:#6B7280;--dark:#111827;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--text);background:#fff;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{background:var(--navy);padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;box-shadow:0 2px 24px rgba(0,0,0,.4)}
+.logo{font-family:'Poppins',sans-serif;font-weight:800;font-size:20px;color:#fff;letter-spacing:-.5px}
+.logo span{color:var(--red)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-link{color:rgba(255,255,255,.7);font-size:14px;font-weight:500;text-decoration:none;transition:.2s}
+.nav-link:hover{color:#fff}
+.nav-cta{background:var(--red);color:#fff;padding:8px 20px;border-radius:8px;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;text-decoration:none;transition:.2s}
+.nav-cta:hover{background:#c73652}
+@media(max-width:600px){.nav-links{gap:12px}.nav-link{display:none}.nav-cta{font-size:13px;padding:8px 14px}}
+
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--green);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
+.trust-bar-item{color:#fff;font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;font-family:'Poppins',sans-serif}
+@media(max-width:600px){.trust-bar{gap:16px}.trust-bar-item{font-size:12px}}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#16213E 50%,var(--blue) 100%);color:#fff;padding:64px 24px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");pointer-events:none}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(233,69,96,.15);border:1px solid rgba(233,69,96,.3);color:#FF8FA3;font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.8px;text-transform:uppercase;font-family:'Poppins',sans-serif}
+.hero h1{font-family:'Poppins',sans-serif;font-weight:900;font-size:clamp(34px,6vw,60px);line-height:1.05;margin-bottom:16px}
+.hero h1 .red{color:var(--red)}
+.hero h1 .line2{display:block;font-size:clamp(20px,3.5vw,36px);font-weight:600;color:rgba(255,255,255,.75);margin-top:6px}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,.7);max-width:520px;margin:0 auto 36px;line-height:1.6}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{background:var(--red);color:#fff;padding:16px 32px;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:.2s;box-shadow:0 8px 32px rgba(233,69,96,.45)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(233,69,96,.55)}
+.btn-secondary{background:rgba(255,255,255,.1);color:#fff;border:2px solid rgba(255,255,255,.2);padding:14px 28px;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;text-decoration:none;transition:.2s}
+.btn-secondary:hover{background:rgba(255,255,255,.15)}
+
+/* Hero phones row */
+.hero-phones{display:flex;justify-content:center;gap:20px;align-items:flex-end;flex-wrap:wrap;margin-top:8px}
+.phone-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 14px;text-align:center;min-width:110px;transition:.2s;cursor:default}
+.phone-card:hover{background:rgba(255,255,255,.1);transform:translateY(-4px)}
+.phone-svg{margin-bottom:8px}
+.phone-name{font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;color:#fff}
+.phone-price{font-size:12px;color:var(--green);font-weight:600;margin-top:2px}
+
+/* ── PRICE CALCULATOR ── */
+.calc-section{background:var(--light);padding:64px 24px}
+.section-label{font-family:'Poppins',sans-serif;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--red);margin-bottom:10px;text-align:center}
+.section-title{font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(24px,4vw,36px);text-align:center;color:var(--navy);margin-bottom:8px}
+.section-sub{text-align:center;color:var(--muted);font-size:15px;margin-bottom:40px;max-width:500px;margin-left:auto;margin-right:auto}
+.calc-card{background:#fff;border-radius:20px;padding:36px;max-width:680px;margin:0 auto;box-shadow:0 4px 40px rgba(0,0,0,.08);border:1px solid var(--border)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+@media(max-width:480px){.calc-grid{grid-template-columns:1fr}}
+.calc-group label{font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;display:block;margin-bottom:6px;text-transform:uppercase;letter-spacing:.5px}
+.calc-group select{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;color:var(--text);outline:none;transition:.2s;appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E") right 14px center no-repeat #fff}
+.calc-group select:focus{border-color:var(--red)}
+.calc-result{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:14px;padding:24px;text-align:center;margin-top:4px}
+.calc-result p{color:rgba(255,255,255,.7);font-size:14px;margin-bottom:6px}
+.calc-price{font-family:'Poppins',sans-serif;font-weight:900;font-size:48px;color:#fff}
+.calc-price .strike{font-size:20px;color:rgba(255,255,255,.4);text-decoration:line-through;font-weight:500;margin-right:8px}
+.calc-note{color:rgba(255,255,255,.6);font-size:13px;margin-top:8px}
+.calc-cta{width:100%;margin-top:20px;padding:16px;background:var(--red);color:#fff;border:none;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;cursor:pointer;transition:.2s}
+.calc-cta:hover{background:#c73652;transform:translateY(-1px)}
+
+/* ── LOGISTICS ── */
+.logistics{padding:72px 24px;background:#fff}
+.logistics-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;max-width:1000px;margin:0 auto;position:relative}
+.logistics-steps::before{content:'';position:absolute;top:36px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--red),var(--blue));z-index:0}
+@media(max-width:700px){.logistics-steps::before{display:none}.logistics-steps{gap:16px}}
+.log-step{text-align:center;padding:0 16px;position:relative;z-index:1}
+.log-num{width:72px;height:72px;background:var(--navy);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;margin:0 auto 16px;border:4px solid #fff;box-shadow:0 4px 20px rgba(0,0,0,.15);position:relative}
+.log-icon{font-size:28px;margin-bottom:10px;display:block}
+.log-step h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:var(--navy);margin-bottom:6px}
+.log-step p{font-size:13px;color:var(--muted);line-height:1.5}
+.log-badge{display:inline-block;background:#f0fdf4;border:1px solid #86efac;color:var(--green);font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;margin-top:6px;font-family:'Poppins',sans-serif}
+
+/* ── CONDITION GRADES ── */
+.grades{padding:72px 24px;background:var(--light)}
+.grades-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:960px;margin:0 auto}
+.grade-card{background:#fff;border-radius:16px;padding:24px;border:2px solid var(--border);transition:.2s;text-align:center}
+.grade-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.grade-badge{display:inline-block;width:48px;height:48px;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.grade-a .grade-badge{background:#f0fdf4;color:var(--green)}
+.grade-b .grade-badge{background:#eff6ff;color:#3b82f6}
+.grade-c .grade-badge{background:#fffbeb;color:var(--orange)}
+.grade-d .grade-badge{background:#fff0f3;color:var(--red)}
+.grade-card h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:var(--navy);margin-bottom:4px}
+.grade-card .grade-title{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.grade-card ul{list-style:none;text-align:left}
+.grade-card ul li{font-size:13px;color:var(--muted);padding:4px 0;display:flex;align-items:flex-start;gap:6px;line-height:1.4}
+.grade-card ul li::before{content:'•';color:var(--red);font-weight:700;flex-shrink:0;margin-top:1px}
+.phone-mockup{width:60px;height:100px;background:linear-gradient(180deg,#2c2c2e,#1c1c1e);border-radius:10px;margin:0 auto 16px;position:relative;border:2px solid #3a3a3c;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.phone-mockup::before{content:'';position:absolute;top:8px;left:50%;transform:translateX(-50%);width:20px;height:3px;background:#3a3a3c;border-radius:2px}
+.phone-mockup .screen{position:absolute;top:14px;left:4px;right:4px;bottom:6px;background:linear-gradient(180deg,#1c1c1e,#2c2c2e);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.grade-a .phone-mockup .screen{background:linear-gradient(135deg,#1c1c1e,#2d2d30)}
+.crack{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;border-radius:10px;overflow:hidden}
+.crack svg{width:100%;height:100%}
+
+/* ── RULES ── */
+.rules-section{padding:72px 24px;background:#fff}
+.rules-container{max-width:860px;margin:0 auto}
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+@media(max-width:600px){.rules-grid{grid-template-columns:1fr}}
+.rules-card{border-radius:16px;padding:24px;border:2px solid var(--border)}
+.rules-card.accept{border-color:#86efac;background:#f0fdf4}
+.rules-card.reject{border-color:#fca5a5;background:#fff0f3}
+.rules-card h3{font-family:'Poppins',sans-serif;font-weight:800;font-size:16px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.rules-card.accept h3{color:var(--green)}
+.rules-card.reject h3{color:var(--red)}
+.rules-card ul{list-style:none}
+.rules-card ul li{font-size:14px;color:#374151;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.05);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.rules-card ul li:last-child{border-bottom:none}
+.rules-card.accept ul li::before{content:'✅';font-size:13px;flex-shrink:0}
+.rules-card.reject ul li::before{content:'❌';font-size:13px;flex-shrink:0}
+.policy-box{background:var(--navy);border-radius:16px;padding:28px;margin-top:24px;color:#fff}
+.policy-box h3{font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.policy-items{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.policy-item{background:rgba(255,255,255,.07);border-radius:10px;padding:14px;font-size:13px;color:rgba(255,255,255,.8);line-height:1.5;border-left:3px solid var(--red)}
+.policy-item strong{color:#fff;display:block;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;margin-bottom:4px}
+
+/* ── TEAM ── */
+.team{padding:72px 24px;background:var(--light)}
+.team-card{max-width:640px;margin:0 auto;background:#fff;border-radius:24px;padding:40px;display:flex;gap:32px;align-items:center;box-shadow:0 8px 40px rgba(0,0,0,.08);border:1px solid var(--border)}
+@media(max-width:580px){.team-card{flex-direction:column;text-align:center}}
+.team-photo{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue));flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:48px;border:4px solid var(--red);overflow:hidden;position:relative}
+.team-photo img{width:100%;height:100%;object-fit:cover;display:none}
+.team-photo .placeholder{font-size:48px}
+.team-photo .photo-label{position:absolute;bottom:-1px;left:0;right:0;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px;text-align:center;font-family:'Poppins',sans-serif}
+.team-info h3{font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;color:var(--navy);margin-bottom:4px}
+.team-info .role{font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;font-family:'Poppins',sans-serif}
+.team-info p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px}
+.team-badges{display:flex;gap:8px;flex-wrap:wrap}
+.team-badge{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--navy);font-family:'Poppins',sans-serif}
+
+/* ── REVIEWS ── */
+.reviews{padding:72px 24px;background:#fff}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;max-width:900px;margin:0 auto}
+.review-card{background:var(--light);border-radius:16px;padding:24px;border:1px solid var(--border)}
+.stars{color:#F59E0B;font-size:16px;margin-bottom:12px;letter-spacing:2px}
+.review-text{font-size:14px;color:#374151;line-height:1.6;margin-bottom:16px;font-style:italic}
+.reviewer{display:flex;align-items:center;gap:10px}
+.reviewer-avatar{width:36px;height:36px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;flex-shrink:0}
+.reviewer-name{font-weight:700;font-size:14px;color:var(--navy);font-family:'Poppins',sans-serif}
+.reviewer-meta{font-size:12px;color:var(--muted)}
+
+/* ── FAQ ── */
+.faq{padding:72px 24px;background:var(--light)}
+.faq-list{max-width:680px;margin:0 auto}
+.faq-item{background:#fff;border-radius:12px;margin-bottom:10px;border:1px solid var(--border);overflow:hidden}
+.faq-q{padding:18px 20px;font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;user-select:none}
+.faq-q:hover{background:var(--light)}
+.faq-icon{width:24px;height:24px;background:var(--light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:.3s;color:var(--red);font-weight:700}
+.faq-a{padding:0 20px 18px;font-size:14px;color:var(--muted);line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+
+/* ── FORM ── */
+.form-section{background:var(--navy);padding:72px 24px}
+.form-section .section-title{color:#fff}
+.form-section .section-sub{color:rgba(255,255,255,.6)}
+.form-section .section-label{color:rgba(233,69,96,.8)}
+.form-card{background:#fff;border-radius:24px;padding:40px;max-width:600px;margin:0 auto;box-shadow:0 20px 80px rgba(0,0,0,.3)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:480px){.form-grid{grid-template-columns:1fr}}
+.fg{display:flex;flex-direction:column;gap:6px}
+.fg.full{grid-column:1/-1}
+label{font-size:12px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.5px}
+input,select,textarea{padding:12px 14px;border:2px solid var(--border);border-radius:10px;font-size:15px;font-family:'Inter',sans-serif;color:var(--text);outline:none;transition:.2s;width:100%;background:#fff}
+input:focus,select:focus,textarea:focus{border-color:var(--red)}
+.form-divider{grid-column:1/-1;height:1px;background:var(--border);margin:4px 0}
+.form-divider-label{grid-column:1/-1;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'Poppins',sans-serif}
+.imei-hint{font-size:11px;color:var(--muted);margin-top:3px}
+.submit-btn{grid-column:1/-1;padding:18px;background:var(--red);color:#fff;border:none;border-radius:12px;font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:10px}
+.submit-btn:hover{background:#c73652;transform:translateY(-1px)}
+.submit-btn:disabled{background:#ccc;cursor:not-allowed;transform:none}
+.form-legal{grid-column:1/-1;font-size:11px;color:var(--muted);text-align:center;line-height:1.5}
+.form-trust-bar{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-top:20px}
+.ftb{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:4px;font-weight:600}
+.spinner{width:18px;height:18px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ── SUCCESS ── */
+.success-box{display:none;text-align:center;padding:32px 16px}
+.success-icon{font-size:64px;margin-bottom:16px;animation:pop .4s ease}
+@keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.2)}100%{transform:scale(1)}}
+.success-box h2{font-family:'Poppins',sans-serif;font-weight:800;font-size:26px;color:var(--green);margin-bottom:10px}
+.success-box p{font-size:15px;color:#555;margin-bottom:6px;line-height:1.6}
+.offer-reveal{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:16px;padding:24px;margin:20px 0}
+.offer-reveal p{color:rgba(255,255,255,.7);font-size:13px;margin:0 0 4px}
+.offer-reveal h3{font-family:'Poppins',sans-serif;font-weight:900;font-size:42px;color:#fff}
+.offer-reveal h3 sup{font-size:24px;font-weight:600}
+.next-steps{text-align:left;background:var(--light);border-radius:12px;padding:20px;margin-top:16px}
+.next-steps h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:var(--navy);margin-bottom:12px}
+.next-step-item{font-size:13px;color:#374151;padding:6px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+.step-num-sm{width:22px;height:22px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;font-family:'Poppins',sans-serif}
+
+/* ── FOOTER ── */
+footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
+.footer-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr;gap:24px}}
+.footer-brand h3{font-family:'Poppins',sans-serif;font-weight:800;color:#fff;font-size:18px;margin-bottom:8px}
+.footer-brand h3 span{color:var(--red)}
+.footer-brand p{font-size:13px;line-height:1.6;margin-bottom:16px}
+.footer-col h4{font-family:'Poppins',sans-serif;font-weight:700;color:#fff;font-size:14px;margin-bottom:12px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.5);text-decoration:none;margin-bottom:6px;transition:.2s}
+.footer-col a:hover{color:#fff}
+.footer-bottom{max-width:860px;margin:24px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-size:12px}
+.verified-badge{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:6px 12px;font-size:11px;color:rgba(255,255,255,.6);display:flex;align-items:center;gap:6px}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">PUKI <span>Devices</span></div>
+  <div class="nav-links">
+    <a href="#how-it-works" class="nav-link">How It Works</a>
+    <a href="#our-rules" class="nav-link">Our Rules</a>
+    <a href="#faq" class="nav-link">FAQ</a>
+    <a href="#get-offer" class="nav-cta">💰 Get Offer</a>
+  </div>
+</nav>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-item">✅ IMEI Checked</div>
+  <div class="trust-bar-item">🔒 Secure Payment</div>
+  <div class="trust-bar-item">⚡ Offer in 1 Hour</div>
+  <div class="trust-bar-item">🚚 Free Royal Mail Label</div>
+  <div class="trust-bar-item">💸 Paid Same Day</div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pill">🇬🇧 UK Trusted iPhone Buyer</div>
+  <h1>
+    We Buy iPhones
+    <span class="red"> — Any Condition</span>
+    <span class="line2">Used · Cracked · Scraped · Faulty · Any Model</span>
+  </h1>
+  <p class="hero-sub">Get a fair cash offer in under 1 hour. Free Royal Mail collection label. Paid the same day we receive your phone. No hidden deductions.</p>
+  <div class="hero-btns">
+    <a href="#get-offer" class="btn-primary">💰 Get My Cash Offer</a>
+    <a href="#how-it-works" class="btn-secondary">How It Works ↓</a>
+  </div>
+
+  <!-- Phone models with SVG mockups -->
+  <div class="hero-phones">
+    <div class="phone-card">
+      <div class="phone-svg">
+        <svg width="40" height="70" viewBox="0 0 40 70" fill="none">
+          <rect x="1" y="1" width="38" height="68" rx="8" fill="#2c2c2e" stroke="#444" stroke-width="1.5"/>
+          <rect x="5" y="10" width="30" height="48" rx="4" fill="#1a1a2e" opacity=".9"/>
+          <rect x="14" y="4" width="12" height="3" rx="1.5" fill="#444"/>
+          <circle cx="20" cy="62" r="2.5" fill="#444"/>
+          <text x="20" y="38" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="8" font-family="Poppins">iPhone</text>
+          <text x="20" y="50" text-anchor="middle" fill="rgba(233,69,96,.8)" font-size="8" font-family="Poppins,sans-serif" font-weight="800">12</text>
+        </svg>
+      </div>
+      <div class="phone-name">iPhone 12</div>
+      <div class="phone-price">Up to £120</div>
+    </div>
+    <div class="phone-card">
+      <div class="phone-svg">
+        <svg width="40" height="76" viewBox="0 0 40 76" fill="none">
+          <rect x="1" y="1" width="38" height="74" rx="8" fill="#2c2c2e" stroke="#555" stroke-width="1.5"/>
+          <rect x="5" y="11" width="30" height="52" rx="4" fill="#0f1b35" opacity=".9"/>
+          <rect x="13" y="4" width="14" height="4" rx="2" fill="#3a3a3c"/>
+          <circle cx="20" cy="68" r="2.5" fill="#444"/>
+          <text x="20" y="40" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="8" font-family="Poppins">iPhone</text>
+          <text x="20" y="52" text-anchor="middle" fill="rgba(233,69,96,.8)" font-size="8" font-family="Poppins,sans-serif" font-weight="800">13</text>
+        </svg>
+      </div>
+      <div class="phone-name">iPhone 13</div>
+      <div class="phone-price">Up to £150</div>
+    </div>
+    <div class="phone-card">
+      <div class="phone-svg">
+        <svg width="40" height="80" viewBox="0 0 40 80" fill="none">
+          <rect x="1" y="1" width="38" height="78" rx="9" fill="#1c1c1e" stroke="#666" stroke-width="1.5"/>
+          <rect x="5" y="12" width="30" height="54" rx="4" fill="#0d1526"/>
+          <rect x="12" y="5" width="16" height="4" rx="2" fill="#3a3a3c"/>
+          <text x="20" y="42" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="8" font-family="Poppins">iPhone</text>
+          <text x="20" y="54" text-anchor="middle" fill="rgba(233,69,96,.8)" font-size="8" font-family="Poppins,sans-serif" font-weight="800">14</text>
+        </svg>
+      </div>
+      <div class="phone-name">iPhone 14</div>
+      <div class="phone-price">Up to £210</div>
+    </div>
+    <div class="phone-card">
+      <div class="phone-svg">
+        <svg width="40" height="82" viewBox="0 0 40 82" fill="none">
+          <rect x="1" y="1" width="38" height="80" rx="9" fill="#1c1c1e" stroke="#777" stroke-width="2"/>
+          <rect x="5" y="13" width="30" height="55" rx="4" fill="#0a1020"/>
+          <rect x="12" y="5" width="16" height="4" rx="2" fill="#3a3a3c"/>
+          <circle cx="29" cy="10" r="5" fill="#2a2a2a" stroke="#444" stroke-width="1"/>
+          <circle cx="29" cy="10" r="2.5" fill="#1a1a1a"/>
+          <text x="20" y="44" text-anchor="middle" fill="rgba(255,255,255,.5)" font-size="8" font-family="Poppins">iPhone</text>
+          <text x="20" y="56" text-anchor="middle" fill="rgba(233,69,96,.8)" font-size="8" font-family="Poppins,sans-serif" font-weight="800">15</text>
+        </svg>
+      </div>
+      <div class="phone-name">iPhone 15</div>
+      <div class="phone-price">Up to £310</div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTANT PRICE CALCULATOR -->
+<section class="calc-section" id="calculator">
+  <div class="section-label">Instant Price</div>
+  <h2 class="section-title">Check Your iPhone Value</h2>
+  <p class="section-sub">Select your model and condition for an instant estimate — no personal info needed</p>
+  <div class="calc-card">
+    <div class="calc-grid">
+      <div class="calc-group">
+        <label>iPhone Model</label>
+        <select id="calcModel" onchange="calcPrice()">
+          <option value="">Select model...</option>
+          <option value="iPhone 15 Pro Max" data-price="650">iPhone 15 Pro Max</option>
+          <option value="iPhone 15 Pro" data-price="580">iPhone 15 Pro</option>
+          <option value="iPhone 15 Plus" data-price="500">iPhone 15 Plus</option>
+          <option value="iPhone 15" data-price="480">iPhone 15</option>
+          <option value="iPhone 14 Pro Max" data-price="520">iPhone 14 Pro Max</option>
+          <option value="iPhone 14 Pro" data-price="460">iPhone 14 Pro</option>
+          <option value="iPhone 14 Plus" data-price="380">iPhone 14 Plus</option>
+          <option value="iPhone 14" data-price="360">iPhone 14</option>
+          <option value="iPhone 13 Pro Max" data-price="420">iPhone 13 Pro Max</option>
+          <option value="iPhone 13 Pro" data-price="370">iPhone 13 Pro</option>
+          <option value="iPhone 13" data-price="300">iPhone 13</option>
+          <option value="iPhone 13 Mini" data-price="240">iPhone 13 Mini</option>
+          <option value="iPhone 12 Pro Max" data-price="280">iPhone 12 Pro Max</option>
+          <option value="iPhone 12 Pro" data-price="240">iPhone 12 Pro</option>
+          <option value="iPhone 12" data-price="200">iPhone 12</option>
+          <option value="iPhone 12 Mini" data-price="160">iPhone 12 Mini</option>
+          <option value="iPhone 11 Pro Max" data-price="180">iPhone 11 Pro Max</option>
+          <option value="iPhone 11 Pro" data-price="160">iPhone 11 Pro</option>
+          <option value="iPhone 11" data-price="140">iPhone 11</option>
+          <option value="iPhone X" data-price="100">iPhone X / XS / XR</option>
+        </select>
+      </div>
+      <div class="calc-group">
+        <label>Condition</label>
+        <select id="calcCondition" onchange="calcPrice()">
+          <option value="">Select condition...</option>
+          <option value="0.75">Excellent — Like new</option>
+          <option value="0.65">Good — Minor marks</option>
+          <option value="0.50">Fair — Visible wear</option>
+          <option value="0.35">Poor — Cracked/scraped</option>
+        </select>
+      </div>
+    </div>
+    <div class="calc-result" id="calcResult">
+      <p>Select model & condition to see your price</p>
+      <div class="calc-price" id="calcPriceDisplay">£ ?</div>
+      <p class="calc-note" id="calcNote">⚡ Offer sent to your email within 1 hour</p>
+    </div>
+    <button class="calc-cta" onclick="document.getElementById('get-offer').scrollIntoView({behavior:'smooth'})">
+      💰 Claim This Offer — Fill in Details Below
+    </button>
+  </div>
+</section>
+
+<!-- HOW IT WORKS - LOGISTICS -->
+<section class="logistics" id="how-it-works">
+  <div class="section-label" style="text-align:center">Logistics</div>
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-sub">5 simple steps — from form to cash in your account</p>
+
+  <div class="logistics-steps">
+    <div class="log-step">
+      <div class="log-num">1</div>
+      <span class="log-icon">📝</span>
+      <h3>Fill In Details</h3>
+      <p>Tell us your iPhone model, storage, condition & contact info. Takes 60 seconds.</p>
+      <span class="log-badge">Instant</span>
+    </div>
+    <div class="log-step">
+      <div class="log-num">2</div>
+      <span class="log-icon">📧</span>
+      <h3>Receive Offer</h3>
+      <p>We email you a firm cash offer within 1 hour. No obligation — accept or decline.</p>
+      <span class="log-badge">Under 1 Hour</span>
+    </div>
+    <div class="log-step">
+      <div class="log-num">3</div>
+      <span class="log-icon">📦</span>
+      <h3>Pack & Post</h3>
+      <p>Accept offer → we send a FREE Royal Mail tracked label. Pack securely & drop off.</p>
+      <span class="log-badge">Free Label</span>
+    </div>
+    <div class="log-step">
+      <div class="log-num">4</div>
+      <span class="log-icon">🔍</span>
+      <h3>We Inspect</h3>
+      <p>We receive & test your phone within 24hrs. IMEI checked. Data securely wiped.</p>
+      <span class="log-badge">24hr Check</span>
+    </div>
+    <div class="log-step">
+      <div class="log-num">5</div>
+      <span class="log-icon">💸</span>
+      <h3>Get Paid!</h3>
+      <p>Payment sent same day via bank transfer or PayPal. Track every step by email.</p>
+      <span class="log-badge">Same Day Pay</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITION GRADES -->
+<section class="grades">
+  <div class="section-label" style="text-align:center">Condition Guide</div>
+  <h2 class="section-title">What Grade Is Your iPhone?</h2>
+  <p class="section-sub">We accept all grades — even cracked & faulty phones</p>
+  <div class="grades-grid">
+    <div class="grade-card grade-a">
+      <div class="phone-mockup"><div class="screen">✨</div></div>
+      <div class="grade-badge">A</div>
+      <h3>Excellent</h3>
+      <div class="grade-title">Like New · Best Price</div>
+      <ul>
+        <li>No scratches or marks</li>
+        <li>Screen perfect</li>
+        <li>Battery 85%+</li>
+        <li>All functions work</li>
+        <li>Original box ideal</li>
+      </ul>
+    </div>
+    <div class="grade-card grade-b">
+      <div class="phone-mockup"><div class="screen">📱</div></div>
+      <div class="grade-badge">B</div>
+      <h3>Good</h3>
+      <div class="grade-title">Light Use · Great Price</div>
+      <ul>
+        <li>Minor light scratches</li>
+        <li>Screen fully working</li>
+        <li>Battery 80%+</li>
+        <li>All functions work</li>
+        <li>No box needed</li>
+      </ul>
+    </div>
+    <div class="grade-card grade-c">
+      <div class="phone-mockup"><div class="screen">🔧</div></div>
+      <div class="grade-badge">C</div>
+      <h3>Fair</h3>
+      <div class="grade-title">Visible Wear · Fair Price</div>
+      <ul>
+        <li>Visible scratches/dents</li>
+        <li>Screen works but marked</li>
+        <li>Battery 70%+</li>
+        <li>May have minor faults</li>
+        <li>Still fully usable</li>
+      </ul>
+    </div>
+    <div class="grade-card grade-d">
+      <div class="phone-mockup">
+        <div class="screen">💥</div>
+        <div class="crack">
+          <svg viewBox="0 0 60 100" fill="none">
+            <path d="M30 0 L20 30 L35 32 L15 70 L25 68 L10 100" stroke="rgba(233,69,96,0.6)" stroke-width="1.5"/>
+          </svg>
+        </div>
+      </div>
+      <div class="grade-badge">D</div>
+      <h3>Poor / Faulty</h3>
+      <div class="grade-title">Any Condition · We Still Buy</div>
+      <ul>
+        <li>Cracked screen OK</li>
+        <li>Scraped body OK</li>
+        <li>Faulty buttons OK</li>
+        <li>Not turning on OK</li>
+        <li>Water damage (ask us)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- OUR RULES -->
+<section class="rules-section" id="our-rules">
+  <div class="section-label" style="text-align:center">Transparency</div>
+  <h2 class="section-title">Our Clear Rules</h2>
+  <p class="section-sub" style="text-align:center;color:var(--muted);margin-bottom:0">We're honest & fair — here's exactly what we accept and what we don't</p>
+  <div class="rules-container">
+    <div class="rules-grid">
+      <div class="rules-card accept">
+        <h3>✅ What We Accept</h3>
+        <ul>
+          <li>Any iPhone X, 11, 12, 13, 14, 15 model</li>
+          <li>Used, scratched, or marked phones</li>
+          <li>Cracked screens (Grade D price applies)</li>
+          <li>Scraped or dented body</li>
+          <li>Faulty cameras, buttons, speakers</li>
+          <li>Phones with no original box</li>
+          <li>Phones bought second-hand (if YOU own it)</li>
+          <li>Phones without charger or cable</li>
+        </ul>
+      </div>
+      <div class="rules-card reject">
+        <h3>❌ What We Cannot Accept</h3>
+        <ul>
+          <li>iCloud locked phones (cannot unlock = no sale)</li>
+          <li>Find My iPhone still enabled</li>
+          <li>Reported stolen or lost (IMEI checked)</li>
+          <li>iPhone 8 or older models</li>
+          <li>Non-Apple phones (iPhones only)</li>
+          <li>Phones you do not legally own</li>
+          <li>Phones with unpaid finance agreements</li>
+          <li>Completely destroyed (board damage)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="policy-box">
+      <h3>⚖️ Our Fair Deal Policy — Protecting Both Sides</h3>
+      <div class="policy-items">
+        <div class="policy-item">
+          <strong>🔍 IMEI Verification</strong>
+          Every phone IMEI is checked against UK stolen phone databases before payment. This protects you and us.
+        </div>
+        <div class="policy-item">
+          <strong>📸 Description Must Match</strong>
+          If phone condition differs from what was described, we will send a revised offer. You can accept or we return the phone FREE.
+        </div>
+        <div class="policy-item">
+          <strong>🔒 Data Wipe Guarantee</strong>
+          All personal data is securely wiped before resale. We follow GDPR guidelines. Your data is never accessed.
+        </div>
+        <div class="policy-item">
+          <strong>💸 Payment Protection</strong>
+          Payment only sent AFTER verification. If phone doesn't pass checks, it's returned to you within 3 working days at no cost.
+        </div>
+        <div class="policy-item">
+          <strong>🛡️ Seller Protection</strong>
+          We use tracked Royal Mail — your phone is insured in transit. If lost in post, you are fully covered.
+        </div>
+        <div class="policy-item">
+          <strong>🤝 Right to Refuse</strong>
+          We reserve the right to refuse any purchase if we believe there is fraud or misrepresentation. We will always explain why.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEET THE TEAM -->
+<section class="team">
+  <div class="section-label" style="text-align:center">Trust</div>
+  <h2 class="section-title">Who You're Dealing With</h2>
+  <p class="section-sub">Real person. Real business. Not a faceless website.</p>
+  <div class="team-card">
+    <div class="team-photo" id="teamPhoto">
+      <!-- YOUR PHOTO GOES HERE — replace the emoji below with: <img src="YOUR_PHOTO.jpg" alt="Kishan"> -->
+      <span class="placeholder">👤</span>
+      <div class="photo-label">Send your photo to replace this!</div>
+    </div>
+    <div class="team-info">
+      <h3>Kishan Ahir</h3>
+      <div class="role">Founder — PUKI Devices</div>
+      <p>Hi! I'm Kishan, the person behind PUKI Devices. I personally handle every single transaction. When you sell to us, you're dealing with a real person who cares about making the process smooth, fair, and fast for you — not a big corporation.</p>
+      <p style="font-size:14px;color:var(--muted);line-height:1.7">I started PUKI Devices because I believe people deserve honest prices and transparent service when selling their old iPhones.</p>
+      <div class="team-badges">
+        <div class="team-badge">🇬🇧 UK Based</div>
+        <div class="team-badge">✅ 100+ Phones Bought</div>
+        <div class="team-badge">⚡ Same Day Payment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews">
+  <div class="section-label" style="text-align:center">Reviews</div>
+  <h2 class="section-title">What Sellers Say</h2>
+  <p class="section-sub">Real sellers, real experiences</p>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Got an offer within 40 minutes! Sent my iPhone 12 and got paid the same day it arrived. Super smooth process, Kishan was very communicative throughout."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">S</div>
+        <div>
+          <div class="reviewer-name">Sarah M.</div>
+          <div class="reviewer-meta">Sold iPhone 12 128GB · Manchester</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"My screen was cracked and I expected a terrible offer. Got £95 for my iPhone 11 — way more than I expected! Free label came in 10 minutes. Brilliant service."</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">J</div>
+        <div>
+          <div class="reviewer-name">James T.</div>
+          <div class="reviewer-meta">Sold iPhone 11 · London</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">"Used loads of these sites before — PUKI Devices is the most transparent. No surprise deductions, the price I was offered is exactly what I received. Will use again!"</p>
+      <div class="reviewer">
+        <div class="reviewer-avatar">P</div>
+        <div>
+          <div class="reviewer-name">Priya K.</div>
+          <div class="reviewer-meta">Sold iPhone 13 · Birmingham</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-label" style="text-align:center">FAQ</div>
+  <h2 class="section-title">Common Questions</h2>
+  <p class="section-sub">Everything you need to know before selling</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How do I know this isn't a scam?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">PUKI Devices is run by Kishan Ahir, a real person based in the UK. You can see his name and photo on this page. We use tracked Royal Mail — your phone is insured in transit. Payment is sent via bank transfer or PayPal with a clear reference. We also provide a full written record of every transaction.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What if my phone doesn't match what I described?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">If your phone is in a different condition to what was described, we will contact you with a revised offer based on what we actually received. You can accept the new offer or we will return your phone completely FREE within 3 working days. We never keep phones without your agreement.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How quickly do I get paid?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Payment is sent the same day your phone passes our inspection — usually within a few hours of receiving it. Bank transfers typically show in your account within 2 hours. PayPal payments are instant.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        Do I need to factory reset my iPhone?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Yes please! Go to Settings → General → Transfer or Reset iPhone → Erase All Content and Settings. Make sure Find My iPhone is turned OFF before sending. If you're unsure how to do this, email us and we'll guide you through it step by step.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        My phone is cracked — will you still buy it?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Yes! We buy cracked and scraped iPhones. Just be honest about the condition in your form and select "Poor" as the condition grade. We'll give you a fair price based on the actual state of the phone.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        How do I find my IMEI number?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">Dial *#06# on your iPhone and the IMEI will appear on screen. You can also find it in Settings → General → About → IMEI. The IMEI is on the SIM tray on newer models. It's a 15-digit number. We use this to check the phone isn't reported stolen — it protects you too!</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">
+        What if my phone gets lost in the post?
+        <div class="faq-icon">+</div>
+      </div>
+      <div class="faq-a">We send you a tracked Royal Mail Tracked 48 label. Every shipment is tracked end to end. In the extremely unlikely event of loss, Royal Mail's compensation covers the value. We will always work with you to resolve any postal issues.</div>
+    </div>
+  </div>
+</section>
+
+<!-- GET OFFER FORM -->
+<section class="form-section" id="get-offer">
+  <div class="section-label">Get Your Offer</div>
+  <h2 class="section-title">Get Your Cash Offer Now</h2>
+  <p class="section-sub">Fill in your details — offer sent to your email within 1 hour</p>
+
+  <div class="form-card">
+    <div id="formContainer">
+      <form id="sellForm">
+        <div class="form-grid">
+
+          <div class="form-divider-label">📋 Your Details</div>
+          <div class="fg">
+            <label>Full Name *</label>
+            <input type="text" name="name" placeholder="John Smith" required>
+          </div>
+          <div class="fg">
+            <label>Phone Number *</label>
+            <input type="tel" name="phone" placeholder="07700 000000" required>
+          </div>
+          <div class="fg full">
+            <label>Email Address *</label>
+            <input type="email" name="email" placeholder="john@example.com" required>
+          </div>
+
+          <div class="form-divider" style="grid-column:1/-1"></div>
+          <div class="form-divider-label">📱 iPhone Details</div>
+
+          <div class="fg full">
+            <label>iPhone Model *</label>
+            <select name="model" required>
+              <option value="">Select your model...</option>
+              <optgroup label="iPhone 15 Series">
+                <option>iPhone 15 Pro Max</option>
+                <option>iPhone 15 Pro</option>
+                <option>iPhone 15 Plus</option>
+                <option>iPhone 15</option>
+              </optgroup>
+              <optgroup label="iPhone 14 Series">
+                <option>iPhone 14 Pro Max</option>
+                <option>iPhone 14 Pro</option>
+                <option>iPhone 14 Plus</option>
+                <option>iPhone 14</option>
+              </optgroup>
+              <optgroup label="iPhone 13 Series">
+                <option>iPhone 13 Pro Max</option>
+                <option>iPhone 13 Pro</option>
+                <option>iPhone 13</option>
+                <option>iPhone 13 Mini</option>
+              </optgroup>
+              <optgroup label="iPhone 12 Series">
+                <option>iPhone 12 Pro Max</option>
+                <option>iPhone 12 Pro</option>
+                <option>iPhone 12</option>
+                <option>iPhone 12 Mini</option>
+              </optgroup>
+              <optgroup label="iPhone 11 Series">
+                <option>iPhone 11 Pro Max</option>
+                <option>iPhone 11 Pro</option>
+                <option>iPhone 11</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option>iPhone XS Max</option>
+                <option>iPhone XS</option>
+                <option>iPhone XR</option>
+                <option>iPhone X</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="fg">
+            <label>Storage *</label>
+            <select name="storage" required>
+              <option value="">Select...</option>
+              <option>64GB</option>
+              <option>128GB</option>
+              <option>256GB</option>
+              <option>512GB</option>
+              <option>1TB</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Condition *</label>
+            <select name="condition" required>
+              <option value="">Select...</option>
+              <option value="Excellent">A — Excellent (like new)</option>
+              <option value="Good">B — Good (minor marks)</option>
+              <option value="Fair">C — Fair (visible wear)</option>
+              <option value="Poor">D — Poor (cracked/scraped)</option>
+            </select>
+          </div>
+
+          <div class="fg">
+            <label>Colour</label>
+            <select name="color">
+              <option>Black / Midnight</option>
+              <option>White / Starlight</option>
+              <option>Blue</option>
+              <option>Red</option>
+              <option>Green</option>
+              <option>Purple</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Asking Price (£) — Optional</label>
+            <input type="number" name="askingPrice" placeholder="e.g. 120">
+          </div>
+
+          <div class="form-divider" style="grid-column:1/-1"></div>
+          <div class="form-divider-label">🔒 Verification (Protects You)</div>
+
+          <div class="fg full">
+            <label>IMEI Number — Strongly Recommended</label>
+            <input type="text" name="imei" placeholder="15-digit number (dial *#06# to find it)" maxlength="15">
+            <span class="imei-hint">ℹ️ We check this against stolen phone databases. Protects you from unknowingly selling a stolen phone.</span>
+          </div>
+
+          <div class="fg full">
+            <label>Confirm: iCloud & Find My iPhone is TURNED OFF *</label>
+            <select name="icloudOff" required>
+              <option value="">Please confirm...</option>
+              <option value="yes">✅ Yes — iCloud signed out & Find My is OFF</option>
+              <option value="unsure">⚠️ Not sure — I need help with this</option>
+            </select>
+          </div>
+
+          <div class="fg full">
+            <label>How Did You Hear About Us?</label>
+            <select name="source">
+              <option>Google</option>
+              <option>Facebook Ad</option>
+              <option>Instagram</option>
+              <option>Friend / Referral</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span id="btnText">💰 Submit & Get My Offer</span>
+            <div class="spinner" id="spinner"></div>
+          </button>
+
+          <p class="form-legal">By submitting this form you confirm this phone is legally yours to sell. False information may result in rejection and referral to authorities. We comply with UK GDPR — your data is never sold.</p>
+        </div>
+      </form>
+      <div class="form-trust-bar">
+        <div class="ftb">🔒 SSL Secure</div>
+        <div class="ftb">📋 GDPR Compliant</div>
+        <div class="ftb">⚡ 1 Hour Response</div>
+        <div class="ftb">🚚 Free Label</div>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-box" id="successBox">
+      <div class="success-icon">🎉</div>
+      <h2>Offer On Its Way!</h2>
+      <p>Check your inbox — your cash offer will arrive within <strong>1 hour</strong>.</p>
+      <div class="offer-reveal">
+        <p>Your estimated offer</p>
+        <h3><sup>£</sup><span id="offerNum">---</span></h3>
+      </div>
+      <div class="next-steps">
+        <h4>📋 What Happens Next:</h4>
+        <div class="next-step-item">
+          <div class="step-num-sm">1</div>
+          Check your email for the exact offer (within 1 hour)
+        </div>
+        <div class="next-step-item">
+          <div class="step-num-sm">2</div>
+          Reply "I ACCEPT" to the email to confirm
+        </div>
+        <div class="next-step-item">
+          <div class="step-num-sm">3</div>
+          We email you a FREE Royal Mail tracked label
+        </div>
+        <div class="next-step-item">
+          <div class="step-num-sm">4</div>
+          Pack your phone safely & drop off at any Post Office
+        </div>
+        <div class="next-step-item">
+          <div class="step-num-sm">5</div>
+          We receive, inspect & pay you — same day! 💸
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>PUKI <span>Devices</span></h3>
+      <p>Trusted UK iPhone buyer. Fast payments, free collection, honest prices. Run by a real person — not a faceless corporation.</p>
+      <div class="verified-badge">🇬🇧 UK Based Business · GDPR Compliant</div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#calculator">Price Calculator</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#our-rules">Our Rules</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://puki-devices.myshopify.com">Buy iPhones →</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="mailto:speedbreaker@ltdsindoor.com">📧 Email Us</a>
+      <a href="#get-offer">💰 Get an Offer</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 PUKI Devices. All rights reserved.</span>
+    <div class="verified-badge">🔒 Secure · Trusted · Transparent</div>
+  </div>
+</footer>
+
+<script>
+// Price calculator
+const prices={
+  'iPhone 15 Pro Max':650,'iPhone 15 Pro':580,'iPhone 15 Plus':500,'iPhone 15':480,
+  'iPhone 14 Pro Max':520,'iPhone 14 Pro':460,'iPhone 14 Plus':380,'iPhone 14':360,
+  'iPhone 13 Pro Max':420,'iPhone 13 Pro':370,'iPhone 13':300,'iPhone 13 Mini':240,
+  'iPhone 12 Pro Max':280,'iPhone 12 Pro':240,'iPhone 12':200,'iPhone 12 Mini':160,
+  'iPhone 11 Pro Max':180,'iPhone 11 Pro':160,'iPhone 11':140,'iPhone X / XS / XR':100
+};
+function calcPrice(){
+  const sel=document.getElementById('calcModel');
+  const cond=parseFloat(document.getElementById('calcCondition').value)||0;
+  const model=sel.options[sel.selectedIndex]?.text||'';
+  const base=prices[model]||0;
+  const result=document.getElementById('calcResult');
+  if(base&&cond){
+    const offer=Math.floor(base*cond);
+    document.getElementById('calcPriceDisplay').innerHTML=`£${offer}`;
+    document.getElementById('calcNote').textContent=`⚡ Firm offer sent to your email within 1 hour`;
+    result.style.background='linear-gradient(135deg,#27AE60,#1e8449)';
+  } else {
+    document.getElementById('calcPriceDisplay').innerHTML='£ ?';
+    document.getElementById('calcNote').textContent='⚡ Offer sent to your email within 1 hour';
+    result.style.background='linear-gradient(135deg,var(--navy),var(--blue))';
+  }
+}
+
+// FAQ toggle
+function toggleFaq(el){
+  const item=el.parentElement;
+  item.classList.toggle('open');
+}
+
+// Form submit
+const WEBHOOK='https://dealfinder-ai.app.n8n.cloud/webhook/puki-buyback';
+document.getElementById('sellForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn');
+  const txt=document.getElementById('btnText');
+  const spin=document.getElementById('spinner');
+  btn.disabled=true;txt.textContent='Sending...';spin.style.display='block';
+  const fd=new FormData(this);
+  const data={
+    name:fd.get('name'),phone:fd.get('phone'),email:fd.get('email'),
+    model:fd.get('model'),storage:fd.get('storage'),condition:fd.get('condition'),
+    color:fd.get('color'),imei:fd.get('imei')||'Not provided',
+    icloudOff:fd.get('icloudOff'),askingPrice:fd.get('askingPrice')||'Not specified',
+    source:fd.get('source'),submittedAt:new Date().toISOString(),
+    pageVersion:'v2-professional'
+  };
+  try{
+    const r=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    const res=await r.json();
+    document.getElementById('formContainer').style.display='none';
+    document.getElementById('successBox').style.display='block';
+    document.getElementById('offerNum').textContent=res.offerPrice||'Check Email';
+  }catch{
+    document.getElementById('formContainer').style.display='none';
+    document.getElementById('successBox').style.display='block';
+    document.getElementById('offerNum').textContent='Check Email';
+  }
+});
+</script>
+</body>
+</html>
