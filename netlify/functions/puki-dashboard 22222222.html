@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUKI Devices — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1A1A2E;
+    --red: #E94560;
+    --blue: #0F3460;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --green: #27AE60;
+    --orange: #F39C12;
+    --bg: #F4F6FA;
+    --card: #FFFFFF;
+    --border: #E2E8F0;
+    --muted: #64748B;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+  /* ── LOGIN SCREEN ── */
+  #login-screen {
+    position: fixed; inset: 0; background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 9999; flex-direction: column; gap: 0;
+  }
+  .login-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 48px 40px;
+    width: 100%; max-width: 400px;
+    backdrop-filter: blur(20px);
+    animation: fadeUp 0.5s ease;
+  }
+  @keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
+  .login-logo { text-align: center; margin-bottom: 32px; }
+  .login-logo span { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 28px; color: white; }
+  .login-logo span em { color: var(--red); font-style: normal; }
+  .login-logo p { color: rgba(255,255,255,0.4); font-size: 13px; margin-top: 4px; }
+  .login-label { color: rgba(255,255,255,0.6); font-size: 13px; margin-bottom: 8px; display: block; }
+  .login-input {
+    width: 100%; padding: 14px 16px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 10px; color: white;
+    font-size: 16px; font-family: 'Inter', sans-serif;
+    outline: none; transition: border 0.2s;
+    letter-spacing: 2px;
+  }
+  .login-input:focus { border-color: var(--red); }
+  .login-input::placeholder { letter-spacing: 0; color: rgba(255,255,255,0.3); }
+  .login-btn {
+    width: 100%; margin-top: 16px; padding: 14px;
+    background: var(--red); border: none; border-radius: 10px;
+    color: white; font-family: 'Poppins', sans-serif;
+    font-weight: 600; font-size: 15px; cursor: pointer;
+    transition: opacity 0.2s; letter-spacing: 0.5px;
+  }
+  .login-btn:hover { opacity: 0.9; }
+  .login-error {
+    color: var(--red); font-size: 13px; text-align: center;
+    margin-top: 12px; display: none;
+  }
+  .login-lock { text-align: center; margin-bottom: 20px; font-size: 36px; }
+
+  /* ── DASHBOARD ── */
+  #dashboard { display: none; }
+
+  /* Header */
+  .header {
+    background: var(--navy); padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px; position: sticky; top: 0; z-index: 100;
+  }
+  .header-logo { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 20px; color: white; }
+  .header-logo em { color: var(--red); font-style: normal; }
+  .header-right { display: flex; align-items: center; gap: 16px; }
+  .header-time { color: rgba(255,255,255,0.5); font-size: 13px; }
+  .logout-btn {
+    background: rgba(255,255,255,0.1); border: none;
+    color: rgba(255,255,255,0.7); padding: 6px 14px;
+    border-radius: 6px; cursor: pointer; font-size: 13px;
+    transition: background 0.2s;
+  }
+  .logout-btn:hover { background: rgba(255,255,255,0.2); }
+
+  /* Main */
+  .main { padding: 24px; max-width: 1200px; margin: 0 auto; }
+  .page-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 22px; margin-bottom: 4px; }
+  .page-sub { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+
+  /* Stats row */
+  .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .stat-card {
+    background: var(--card); border-radius: 14px;
+    padding: 20px; border: 1px solid var(--border);
+    transition: transform 0.2s;
+  }
+  .stat-card:hover { transform: translateY(-2px); }
+  .stat-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .stat-value { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 28px; }
+  .stat-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .stat-green { color: var(--green); }
+  .stat-red { color: var(--red); }
+  .stat-orange { color: var(--orange); }
+  .stat-navy { color: var(--navy); }
+
+  /* Grid 2 col */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+  @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr 1fr; } }
+
+  /* Section card */
+  .section-card { background: var(--card); border-radius: 14px; border: 1px solid var(--border); overflow: hidden; }
+  .section-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .section-title { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 14px; }
+  .section-badge { font-size: 11px; padding: 3px 8px; border-radius: 20px; font-weight: 500; }
+  .badge-green { background: #E8F8EF; color: #1A7A45; }
+  .badge-orange { background: #FEF3E2; color: #B45309; }
+  .badge-red { background: #FEE8EC; color: #9B1C2E; }
+  .badge-blue { background: #EBF3FF; color: #1A4FAD; }
+
+  /* Table */
+  .data-table { width: 100%; border-collapse: collapse; }
+  .data-table th { padding: 10px 20px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); background: #F8FAFC; border-bottom: 1px solid var(--border); }
+  .data-table td { padding: 12px 20px; font-size: 13px; border-bottom: 1px solid #F1F5F9; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: #F8FAFC; }
+
+  /* Status dots */
+  .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+  .dot-green { background: var(--green); }
+  .dot-orange { background: var(--orange); }
+  .dot-red { background: var(--red); }
+
+  /* Workflow status */
+  .workflow-list { padding: 8px 0; }
+  .workflow-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid #F1F5F9; }
+  .workflow-item:last-child { border-bottom: none; }
+  .workflow-name { font-size: 13px; font-weight: 500; }
+  .workflow-time { font-size: 12px; color: var(--muted); }
+  .wf-badge { font-size: 11px; padding: 3px 10px; border-radius: 20px; font-weight: 500; }
+  .wf-live { background: #E8F8EF; color: #1A7A45; }
+  .wf-paused { background: #FEF3E2; color: #B45309; }
+
+  /* Ad performance */
+  .ad-row { display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid #F1F5F9; }
+  .ad-row:last-child { border-bottom: none; }
+  .ad-name { font-size: 13px; font-weight: 500; }
+  .ad-metrics { display: flex; gap: 20px; }
+  .ad-metric { text-align: center; }
+  .ad-metric-val { font-size: 13px; font-weight: 600; }
+  .ad-metric-label { font-size: 10px; color: var(--muted); }
+
+  /* Empty state */
+  .empty { padding: 32px 20px; text-align: center; color: var(--muted); font-size: 13px; }
+
+  /* Full width section */
+  .full-width { margin-bottom: 24px; }
+
+  /* Refresh btn */
+  .refresh-btn {
+    background: var(--navy); color: white; border: none;
+    padding: 8px 16px; border-radius: 8px; font-size: 13px;
+    cursor: pointer; font-family: 'Poppins', sans-serif;
+    font-weight: 500; display: flex; align-items: center; gap: 6px;
+    transition: opacity 0.2s;
+  }
+  .refresh-btn:hover { opacity: 0.85; }
+
+  /* Live indicator */
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); display: inline-block; margin-right: 6px; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ LOGIN SCREEN ═══════════════════════════════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-lock">🔒</div>
+    <div class="login-logo">
+      <span>PUKI <em>Devices</em></span>
+      <p>Private Business Dashboard</p>
+    </div>
+    <label class="login-label">Enter Password</label>
+    <input type="password" id="pwd-input" class="login-input" placeholder="Enter your password" onkeydown="if(event.key==='Enter') checkPassword()">
+    <button class="login-btn" onclick="checkPassword()">🔓 Unlock Dashboard</button>
+    <div class="login-error" id="login-error">❌ Wrong password. Try again.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ DASHBOARD ═══════════════════════════════ -->
+<div id="dashboard">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-logo">PUKI <em>Devices</em></div>
+    <div class="header-right">
+      <span class="header-time"><span class="live-dot"></span><span id="clock"></span></span>
+      <button class="logout-btn" onclick="logout()">🔒 Lock</button>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="page-title">Business Overview</div>
+    <div class="page-sub">Your live PUKI Devices command centre — updated automatically</div>
+
+    <!-- Stats Row -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">📦 Phones In Stock</div>
+        <div class="stat-value stat-navy" id="stat-stock">—</div>
+        <div class="stat-sub">Current inventory</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">💰 Profit This Month</div>
+        <div class="stat-value stat-green" id="stat-profit">—</div>
+        <div class="stat-sub">Net after costs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">✅ Phones Sold</div>
+        <div class="stat-value stat-green" id="stat-sold">—</div>
+        <div class="stat-sub">This month</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">📥 Sell Requests</div>
+        <div class="stat-value stat-orange" id="stat-requests">—</div>
+        <div class="stat-sub">Awaiting review</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">🔍 Deals Found</div>
+        <div class="stat-value stat-navy" id="stat-deals">—</div>
+        <div class="stat-sub">Last 24 hours</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">💸 Ad Spend Today</div>
+        <div class="stat-value stat-orange" id="stat-ads">—</div>
+        <div class="stat-sub">Google + Facebook</div>
+      </div>
+    </div>
+
+    <!-- Inventory + Sell Requests -->
+    <div class="grid-2">
+
+      <!-- Inventory -->
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-title">📱 Current Inventory</span>
+          <span class="section-badge badge-blue" id="inventory-count">Loading...</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Phone</th>
+              <th>Price</th>
+              <th>Days Listed</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="inventory-table">
+            <tr><td colspan="4" class="empty">Loading inventory...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Sell Requests -->
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-title">📥 Sell Requests</span>
+          <span class="section-badge badge-orange" id="requests-count">Loading...</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>iPhone</th>
+              <th>Asking</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="requests-table">
+            <tr><td colspan="4" class="empty">Loading requests...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Workflows + Deals -->
+    <div class="grid-2">
+
+      <!-- n8n Workflows -->
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-title">⚡ n8n Workflows</span>
+          <span class="section-badge badge-green">6 Active</span>
+        </div>
+        <div class="workflow-list">
+          <div class="workflow-item">
+            <div><div class="workflow-name"><span class="dot dot-green"></span>eBay Deal Scout</div><div class="workflow-time">Every 4 hours</div></div>
+            <span class="wf-badge wf-live">✅ Live</span>
+          </div>
+          <div class="workflow-item">
+            <div><div class="workflow-name"><span class="dot dot-green"></span>Auto Lister</div><div class="workflow-time">On demand</div></div>
+            <span class="wf-badge wf-live">✅ Live</span>
+          </div>
+          <div class="workflow-item">
+            <div><div class="workflow-name"><span class="dot dot-green"></span>Price Manager</div><div class="workflow-time">Every 24 hours</div></div>
+            <span class="wf-badge wf-live">✅ Live</span>
+          </div>
+          <div class="workflow-item">
+            <div><div class="workflow-name"><span class="dot dot-green"></span>Learning Engine</div><div class="workflow-time">Every 24 hours</div></div>
+            <span class="wf-badge wf-live">✅ Live</span>
+          </div>
+          <div class="workflow-item">
+            <div><div class="workflow-name"><span class="dot dot-green"></span>Facebook Optimizer</div><div class="workflow-time">Every Monday</div></div>
+            <span class="wf-badge wf-live">✅ Live</span>
+          </div>
+          <div class="workflow-item">
+            <div><div class="workflow-name"><span class="dot dot-green"></span>Google Ads Optimizer</div><div class="workflow-time">Every Monday</div></div>
+            <span class="wf-badge wf-live">✅ Live</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Latest Deals -->
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-title">🔍 Latest Deals Found</span>
+          <span class="section-badge badge-green" id="deals-count">Loading...</span>
+        </div>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Phone</th>
+              <th>Buy Price</th>
+              <th>Profit</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="deals-table">
+            <tr><td colspan="4" class="empty">Loading deals...</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- Ads Performance -->
+    <div class="full-width">
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-title">📊 Ad Performance</span>
+          <span class="section-badge badge-blue">This Week</span>
+        </div>
+        <div>
+          <div class="ad-row">
+            <div>
+              <div class="ad-name">🎯 Google Ads — Sell iPhones</div>
+              <div style="font-size:12px;color:var(--muted)">Campaign 1 · £5/day budget</div>
+            </div>
+            <div class="ad-metrics">
+              <div class="ad-metric"><div class="ad-metric-val" id="g1-roas">—</div><div class="ad-metric-label">ROAS</div></div>
+              <div class="ad-metric"><div class="ad-metric-val" id="g1-spend">—</div><div class="ad-metric-label">Spend</div></div>
+              <div class="ad-metric"><div class="ad-metric-val" id="g1-status">—</div><div class="ad-metric-label">Status</div></div>
+            </div>
+          </div>
+          <div class="ad-row">
+            <div>
+              <div class="ad-name">🎯 Google Ads — Buy iPhones</div>
+              <div style="font-size:12px;color:var(--muted)">Campaign 2 · £3/day budget</div>
+            </div>
+            <div class="ad-metrics">
+              <div class="ad-metric"><div class="ad-metric-val" id="g2-roas">—</div><div class="ad-metric-label">ROAS</div></div>
+              <div class="ad-metric"><div class="ad-metric-val" id="g2-spend">—</div><div class="ad-metric-label">Spend</div></div>
+              <div class="ad-metric"><div class="ad-metric-val" id="g2-status">—</div><div class="ad-metric-label">Status</div></div>
+            </div>
+          </div>
+          <div class="ad-row">
+            <div>
+              <div class="ad-name">📘 Facebook — Sell iPhones</div>
+              <div style="font-size:12px;color:var(--muted)">Sell campaign</div>
+            </div>
+            <div class="ad-metrics">
+              <div class="ad-metric"><div class="ad-metric-val" id="fb1-ctr">—</div><div class="ad-metric-label">CTR</div></div>
+              <div class="ad-metric"><div class="ad-metric-val" id="fb1-cpc">—</div><div class="ad-metric-label">CPC</div></div>
+              <div class="ad-metric"><div class="ad-metric-val" id="fb1-status">—</div><div class="ad-metric-label">Status</div></div>
+            </div>
+          </div>
+          <div class="ad-row">
+            <div>
+              <div class="ad-name">📘 Facebook — Buy iPhones</div>
+              <div style="font-size:12px;color:var(--muted)">Buy campaign</div>
+            </div>
+            <div class="ad-metrics">
+              <div class="ad-metric"><div class="ad-metric-val" id="fb2-ctr">—</div><div class="ad-metric-label">CTR</div></div>
+              <div class="ad-metric"><div class="ad-metric-val" id="fb2-cpc">—</div><div class="ad-metric-label">CPC</div></div>
+              <div class="ad-metric"><div class="ad-metric-val" id="fb2-status">—</div><div class="ad-metric-label">Status</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Monthly Costs -->
+    <div class="full-width">
+      <div class="section-card">
+        <div class="section-header">
+          <span class="section-title">💳 Monthly Fixed Costs</span>
+          <span class="section-badge badge-red">£57/mo</span>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Service</th><th>Cost</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>n8n Cloud</td><td>£28/mo</td><td><span class="dot dot-green"></span>Active</td></tr>
+            <tr><td>Shopify</td><td>£29/mo</td><td><span class="dot dot-green"></span>Active</td></tr>
+            <tr><td>Netlify</td><td>$9/mo</td><td><span class="dot dot-green"></span>Active</td></tr>
+            <tr><td><strong>Total</strong></td><td><strong>~£65/mo</strong></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ── PASSWORD ──
+  const CORRECT_PASSWORD = 'puki280080';
+  const SESSION_KEY = 'puki_auth';
+
+  function checkPassword() {
+    const input = document.getElementById('pwd-input').value;
+    if (input === CORRECT_PASSWORD) {
+      sessionStorage.setItem(SESSION_KEY, 'true');
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'block';
+      initDashboard();
+    } else {
+      const err = document.getElementById('login-error');
+      err.style.display = 'block';
+      document.getElementById('pwd-input').value = '';
+      document.getElementById('pwd-input').focus();
+      setTimeout(() => err.style.display = 'none', 3000);
+    }
+  }
+
+  function logout() {
+    sessionStorage.removeItem(SESSION_KEY);
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('dashboard').style.display = 'none';
+    document.getElementById('pwd-input').value = '';
+  }
+
+  // Auto-unlock if already logged in this session
+  if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+  }
+
+  // ── CLOCK ──
+  function updateClock() {
+    const now = new Date();
+    document.getElementById('clock').textContent = now.toLocaleString('en-GB', {
+      weekday: 'short', day: 'numeric', month: 'short',
+      hour: '2-digit', minute: '2-digit'
+    });
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  // ── DASHBOARD INIT ──
+  function initDashboard() {
+    loadAirtableData();
+  }
+
+  // ── LOAD DATA FROM AIRTABLE VIA N8N WEBHOOK ──
+  async function loadAirtableData() {
+    // Inventory
+    try {
+      const res = await fetch('https://dealfinder-ai.app.n8n.cloud/webhook/dashboard-data');
+      if (res.ok) {
+        const data = await res.json();
+        renderDashboard(data);
+      } else {
+        renderPlaceholders();
+      }
+    } catch(e) {
+      renderPlaceholders();
+    }
+  }
+
+  function renderPlaceholders() {
+    document.getElementById('stat-stock').textContent = '—';
+    document.getElementById('stat-profit').textContent = '—';
+    document.getElementById('stat-sold').textContent = '—';
+    document.getElementById('stat-requests').textContent = '—';
+    document.getElementById('stat-deals').textContent = '—';
+    document.getElementById('stat-ads').textContent = '—';
+    document.getElementById('inventory-count').textContent = 'Connect n8n';
+    document.getElementById('requests-count').textContent = 'Connect n8n';
+    document.getElementById('deals-count').textContent = 'Connect n8n';
+    document.getElementById('inventory-table').innerHTML = '<tr><td colspan="4" class="empty">⚡ Connect n8n webhook to load live data</td></tr>';
+    document.getElementById('requests-table').innerHTML = '<tr><td colspan="4" class="empty">⚡ Connect n8n webhook to load live data</td></tr>';
+    document.getElementById('deals-table').innerHTML = '<tr><td colspan="4" class="empty">⚡ Connect n8n webhook to load live data</td></tr>';
+    ['g1-roas','g1-spend','g1-status','g2-roas','g2-spend','g2-status'].forEach(id => document.getElementById(id).textContent = '—');
+    ['fb1-ctr','fb1-cpc','fb1-status','fb2-ctr','fb2-cpc','fb2-status'].forEach(id => document.getElementById(id).textContent = '—');
+  }
+
+  function renderDashboard(data) {
+    if (data.stats) {
+      document.getElementById('stat-stock').textContent = data.stats.stock || '—';
+      document.getElementById('stat-profit').textContent = data.stats.profit || '—';
+      document.getElementById('stat-sold').textContent = data.stats.sold || '—';
+      document.getElementById('stat-requests').textContent = data.stats.requests || '—';
+      document.getElementById('stat-deals').textContent = data.stats.deals || '—';
+      document.getElementById('stat-ads').textContent = data.stats.adSpend || '—';
+    }
+    if (data.inventory && data.inventory.length > 0) {
+      document.getElementById('inventory-count').textContent = data.inventory.length + ' phones';
+      document.getElementById('inventory-table').innerHTML = data.inventory.map(p => {
+        const days = p.daysListed || 0;
+        const statusColor = days >= 10 ? 'dot-red' : days >= 5 ? 'dot-orange' : 'dot-green';
+        const statusText = days >= 10 ? '⚠️ Drop price' : days >= 5 ? '📉 Drop soon' : '✅ Active';
+        return `<tr>
+          <td><strong>${p.model || '—'}</strong></td>
+          <td>£${p.price || '—'}</td>
+          <td><span class="dot ${statusColor}"></span>${days} days</td>
+          <td>${statusText}</td>
+        </tr>`;
+      }).join('');
+    } else { renderPlaceholders(); }
+  }
+
+  // Init on load if already authenticated
+  if (sessionStorage.getItem(SESSION_KEY) === 'true') {
+    initDashboard();
+  }
+</script>
+</body>
+</html>
