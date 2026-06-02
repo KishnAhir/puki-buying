@@ -5,6 +5,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sell Your iPhone | PUKI Devices — Fast Cash, Free Collection</title>
 <meta name="description" content="Sell your iPhone today for instant cash. Any model, any condition. Free Royal Mail label, same-day payment. Trusted UK iPhone buyer.">
+<meta property="og:title" content="Sell Your iPhone — PUKI Devices | Fast Payment">
+<meta property="og:description" content="Get instant offer for your iPhone. Fast payment, free collection. UK registered business. Compare vs competitors.">
+<meta property="og:url" content="https://pukidevices.co.uk">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://pukidevices.co.uk/logo.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "PUKI Devices",
+  "description": "Pre-owned iPhone specialist. Buy and sell iPhones UK and internationally.",
+  "url": "https://pukidevices.co.uk",
+  "telephone": "+447393411663",
+  "email": "info@pukidevices.co.uk",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "137 St Johns Road",
+    "addressLocality": "Wembley",
+    "postalCode": "HA9 7JP",
+    "addressCountry": "GB"
+  },
+  "openingHours": "Mo-Fr 09:00-18:00",
+  "priceRange": "££",
+  "sameAs": []
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -133,16 +159,16 @@ nav{background:var(--navy);padding:0 24px;height:64px;display:flex;align-items:c
 
 /* ── TEAM ── */
 .team{padding:72px 24px;background:var(--light)}
-.team-card{max-width:640px;margin:0 auto;background:#fff;border-radius:24px;padding:40px;display:flex;gap:32px;align-items:center;box-shadow:0 8px 40px rgba(0,0,0,.08);border:1px solid var(--border)}
+.team-card{max-width:640px;margin:0 auto;background:#fff;border-radius:24px;padding:40px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;box-shadow:0 8px 40px rgba(0,0,0,.08);border:1px solid var(--border)}
 @media(max-width:580px){.team-card{flex-direction:column;text-align:center}}
-.team-photo{width:140px;height:140px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue));flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:48px;border:4px solid var(--red);overflow:hidden;position:relative}
-.team-photo img{width:100%;height:100%;object-fit:cover;display:none}
+.team-photo{width:150px;height:150px;border-radius:50%;background:linear-gradient(135deg,var(--navy),var(--blue));flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:48px;border:4px solid var(--red);overflow:hidden;position:relative;box-shadow:0 6px 24px rgba(0,0,0,.18);margin:0 auto;align-self:center}
+.team-photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
 .team-photo .placeholder{font-size:48px}
 .team-photo .photo-label{position:absolute;bottom:-1px;left:0;right:0;background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:3px;text-align:center;font-family:'Poppins',sans-serif}
 .team-info h3{font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;color:var(--navy);margin-bottom:4px}
 .team-info .role{font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px;font-family:'Poppins',sans-serif}
 .team-info p{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:16px}
-.team-badges{display:flex;gap:8px;flex-wrap:wrap}
+.team-badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .team-badge{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--navy);font-family:'Poppins',sans-serif}
 
 /* ── REVIEWS ── */
@@ -192,6 +218,30 @@ input:focus,select:focus,textarea:focus{border-color:var(--red)}
 .spinner{width:18px;height:18px;border:3px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;display:none}
 @keyframes spin{to{transform:rotate(360deg)}}
 
+/* ── COMPARISON TABLE ── */
+.compare-wrap{margin-top:24px}
+.compare-wrap h4{font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:var(--navy);margin-bottom:10px;text-align:left}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;border-radius:12px;overflow:hidden;margin-top:8px}
+.compare-table th{background:var(--navy);color:#fff;padding:10px 12px;text-align:left;font-family:'Poppins',sans-serif;font-weight:600;font-size:12px}
+.compare-table td{padding:10px 12px;border-bottom:1px solid var(--border);color:#374151}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table .puki-row td{background:#fff0f3;font-weight:700;font-family:'Poppins',sans-serif;color:var(--navy)}
+.compare-table .puki-row td:first-child{color:#E94560}
+/* ── ACCEPT SECTION ── */
+.accept-section{margin-top:24px;text-align:center}
+.accept-btn{display:block;width:100%;padding:18px;background:#E94560;color:#fff;border:none;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;cursor:pointer;transition:.2s;margin-bottom:12px}
+.accept-btn:hover{background:#c73652;transform:translateY(-1px)}
+.accept-btn:disabled{background:#ccc;cursor:not-allowed;transform:none}
+.decline-link{font-size:13px;color:var(--muted);cursor:pointer;text-decoration:underline;background:none;border:none;font-family:'Inter',sans-serif}
+.accepted-msg{display:none;background:#f0fdf4;border:2px solid #86efac;border-radius:12px;padding:20px;text-align:center;margin-top:12px}
+.accepted-msg h3{font-family:'Poppins',sans-serif;font-weight:700;color:var(--green);font-size:18px;margin-bottom:6px}
+/* ── FORMALITIES ── */
+.formalities{margin-top:16px;border:1px solid var(--border);border-radius:12px;overflow:hidden;text-align:left}
+.formalities-toggle{width:100%;padding:14px 16px;background:var(--light);border:none;cursor:pointer;text-align:left;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:var(--navy);display:flex;justify-content:space-between;align-items:center}
+.formalities-body{display:none;padding:16px;background:#fff}
+.formalities-body.open{display:block}
+.formalities-item{font-size:13px;color:#374151;padding:5px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+
 /* ── SUCCESS ── */
 .success-box{display:none;text-align:center;padding:32px 16px}
 .success-icon{font-size:64px;margin-bottom:16px;animation:pop .4s ease}
@@ -207,6 +257,54 @@ input:focus,select:focus,textarea:focus{border-color:var(--red)}
 .next-step-item{font-size:13px;color:#374151;padding:6px 0;display:flex;align-items:flex-start;gap:8px;line-height:1.5}
 .step-num-sm{width:22px;height:22px;background:var(--red);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;font-family:'Poppins',sans-serif}
 
+/* ── OFFER TIMER ── */
+.offer-timer{text-align:center;padding:10px 14px;background:#FFF7ED;border:1px solid #FED7AA;border-radius:10px;margin:10px 0;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:#C2410C}
+.offer-timer.expired{background:#FEF2F2;border-color:#FECACA;color:#DC2626}
+/* ── CHANGED MIND ── */
+.changed-mind-box{background:#F0FDF4;border:1.5px solid #86EFAC;border-radius:12px;padding:18px 20px;text-align:center;margin-top:10px}
+.changed-mind-box p{font-size:13px;color:#6B7280;margin-bottom:4px}
+.changed-mind-box strong{font-size:15px;color:var(--navy);display:block;margin-bottom:12px}
+.cm-accept-btn{width:100%;padding:13px;background:#16A34A;color:#fff;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer}
+/* ── EDIT DETAILS ── */
+.edit-details-btn{margin:12px 0 4px;width:100%;padding:11px;background:transparent;color:#6B7280;border:1.5px solid #D1D5DB;border-radius:10px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:.2s}
+.edit-details-btn:hover{border-color:#9CA3AF;color:#374151;background:#F9FAFB}
+/* ── LEGAL CHECKBOXES ── */
+.legal-checks{grid-column:1/-1;display:flex;flex-direction:column;gap:10px;margin:4px 0}
+.legal-check{display:flex;align-items:flex-start;gap:10px;cursor:pointer;font-size:13px;color:#374151;line-height:1.5}
+.legal-check input[type=checkbox]{width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--red);cursor:pointer}
+.legal-check-error{grid-column:1/-1;display:none;background:#FEF2F2;border:1px solid #FECACA;color:#DC2626;padding:10px 14px;border-radius:8px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:500}
+/* ── GRADING CONTRACT ── */
+.grading-contract{display:none;margin-top:20px;border:2px solid #F59E0B;border-radius:12px;padding:20px;background:#FFFBEB}
+.gc-heading{font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;color:#92400E;margin-bottom:10px}
+.gc-warn{font-size:14px;font-weight:700;color:#B45309;padding:10px 14px;background:#FEF3C7;border-radius:8px;border-left:4px solid #F59E0B;margin-bottom:14px;font-family:'Poppins',sans-serif}
+.gc-check{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;font-size:15px;color:#374151;cursor:pointer;line-height:1.5}
+.gc-check input[type=checkbox]{width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:#E94560;cursor:pointer}
+.gc-error{display:none;background:#FEF2F2;border:1px solid #FECACA;color:#DC2626;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px;font-family:'Poppins',sans-serif;font-weight:500}
+@keyframes gcShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(6px)}}
+.gc-shake{animation:gcShake .4s ease;border-color:#EF4444!important;background:#FEF2F2!important}
+/* ── PAYMENT SECTION ── */
+.payment-section{border:2px solid var(--border);border-radius:12px;padding:16px;background:#FAFBFC;margin-top:6px}
+.payment-section-title{font-size:13px;font-weight:700;color:var(--navy);font-family:'Poppins',sans-serif;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px}
+.pm-options{display:flex;flex-direction:column;gap:8px}
+.pm-option-row{display:flex;align-items:center;gap:10px;cursor:pointer;padding:10px 14px;border:2px solid var(--border);border-radius:10px;font-size:15px;font-weight:500;transition:.2s;color:var(--text)}
+.pm-option-row:hover{border-color:var(--red);background:#fff5f7}
+.pm-option-row input[type=radio]{width:18px;height:18px;accent-color:var(--red);flex-shrink:0;cursor:pointer}
+.pay-security-note{margin-top:12px;font-size:12px;color:#6B7280;background:#F9FAFB;border:1px solid #E5E7EB;border-radius:8px;padding:10px 14px;line-height:1.6;display:none}
+.field-err{font-size:12px;color:#DC2626;margin-top:4px;display:none}
+/* ── PHOTO UPLOAD ── */
+.photo-upload-area{border:2px dashed var(--border);border-radius:10px;padding:20px;text-align:center;cursor:pointer;transition:.2s;background:#fafbfc;min-height:80px;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.photo-upload-area:hover{border-color:var(--red);background:#fff5f7}
+.photo-thumb-wrap{position:relative;width:80px;height:80px}
+.photo-thumb{width:80px;height:80px;object-fit:cover;border-radius:8px;border:1px solid var(--border)}
+.photo-remove{position:absolute;top:-6px;right:-6px;width:20px;height:20px;background:var(--red);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;line-height:1;padding:0}
+/* ── GRADE PHOTOS ── */
+.grade-photos{display:flex;gap:8px;justify-content:center;margin-top:14px}
+.grade-photo-box{width:80px;height:80px;background:#F3F4F6;border:2px dashed #D1D5DB;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.grade-photo-icon{font-size:22px;opacity:.35}
+.grade-photo-caption{font-size:11px;color:#9CA3AF;text-align:center;margin-top:6px}
+/* ── COMPETITOR LOGOS ── */
+.comp-logo{width:20px;height:20px;vertical-align:middle;border-radius:3px;margin-right:6px}
+.comp-initial{display:none;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;color:#fff;font-size:11px;font-weight:700;vertical-align:middle;margin-right:6px}
 /* ── FOOTER ── */
 footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
 .footer-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px}
@@ -225,7 +323,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
 
 <!-- NAV -->
 <nav>
-  <div class="logo">PUKI <span>Devices</span></div>
+  <div class="logo"><img src="logo.png" alt="PUKI Devices" style="height:40px;width:auto;display:block;"></div>
   <div class="nav-links">
     <a href="#how-it-works" class="nav-link">How It Works</a>
     <a href="#our-rules" class="nav-link">Our Rules</a>
@@ -249,13 +347,14 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
   <h1>
     We Buy iPhones
     <span class="red"> — Any Condition</span>
-    <span class="line2">Used · Cracked · Scraped · Faulty · Any Model</span>
+    <span class="line2">Used · Cracked · Scraped · Faulty · iCloud Locked/Unlocked · Any Model</span>
   </h1>
   <p class="hero-sub">Get a fair cash offer in under 1 hour. Free Royal Mail collection label. Paid the same day we receive your phone. No hidden deductions.</p>
   <div class="hero-btns">
     <a href="#get-offer" class="btn-primary">💰 Get My Cash Offer</a>
     <a href="#how-it-works" class="btn-secondary">How It Works ↓</a>
   </div>
+  <div id="heroStockCounter" style="margin-top:16px;font-size:14px;color:rgba(255,255,255,.7);font-family:'Poppins',sans-serif;font-weight:500">📱 Loading availability...</div>
 
   <!-- Phone models with SVG mockups -->
   <div class="hero-phones">
@@ -365,7 +464,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
     <div class="calc-result" id="calcResult">
       <p>Select model & condition to see your price</p>
       <div class="calc-price" id="calcPriceDisplay">£ ?</div>
-      <p class="calc-note" id="calcNote">⚡ Offer sent to your email within 1 hour</p>
+      <p class="calc-note" id="calcNote">⚡ Offer sent to your email as soon as possible ⚡</p>
     </div>
     <button class="calc-cta" onclick="document.getElementById('get-offer').scrollIntoView({behavior:'smooth'})">
       💰 Claim This Offer — Fill in Details Below
@@ -391,7 +490,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
       <div class="log-num">2</div>
       <span class="log-icon">📧</span>
       <h3>Receive Offer</h3>
-      <p>We email you a firm cash offer within 1 hour. No obligation — accept or decline.</p>
+      <p>We email you a firm cash offer as soon as possible ⚡. No obligation — accept or decline.</p>
       <span class="log-badge">Under 1 Hour</span>
     </div>
     <div class="log-step">
@@ -436,6 +535,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
         <li>All functions work</li>
         <li>Original box ideal</li>
       </ul>
+      <div class="grade-photos">
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+      </div>
+      <p class="grade-photo-caption">Example A condition · <span style="color:#9CA3AF">Photos coming soon</span></p>
     </div>
     <div class="grade-card grade-b">
       <div class="phone-mockup"><div class="screen">📱</div></div>
@@ -449,6 +554,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
         <li>All functions work</li>
         <li>No box needed</li>
       </ul>
+      <div class="grade-photos">
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+      </div>
+      <p class="grade-photo-caption">Example B condition · <span style="color:#9CA3AF">Photos coming soon</span></p>
     </div>
     <div class="grade-card grade-c">
       <div class="phone-mockup"><div class="screen">🔧</div></div>
@@ -462,6 +573,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
         <li>May have minor faults</li>
         <li>Still fully usable</li>
       </ul>
+      <div class="grade-photos">
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+      </div>
+      <p class="grade-photo-caption">Example C condition · <span style="color:#9CA3AF">Photos coming soon</span></p>
     </div>
     <div class="grade-card grade-d">
       <div class="phone-mockup">
@@ -482,6 +599,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
         <li>Not turning on OK</li>
         <li>Water damage (ask us)</li>
       </ul>
+      <div class="grade-photos">
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+        <div class="grade-photo-box"><span class="grade-photo-icon">📷</span></div>
+      </div>
+      <p class="grade-photo-caption">Example D condition · <span style="color:#9CA3AF">Photos coming soon</span></p>
     </div>
   </div>
 </section>
@@ -559,9 +682,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
   <p class="section-sub">Real person. Real business. Not a faceless website.</p>
   <div class="team-card">
     <div class="team-photo" id="teamPhoto">
-      <!-- YOUR PHOTO GOES HERE — replace the emoji below with: <img src="YOUR_PHOTO.jpg" alt="Kishan"> -->
-      <span class="placeholder">👤</span>
-      <div class="photo-label">Send your photo to replace this!</div>
+      <img src="kishan.jpg" alt="Kishan" style="display:block;">
     </div>
     <div class="team-info">
       <h3>Kishan Ahir</h3>
@@ -681,11 +802,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
 <section class="form-section" id="get-offer">
   <div class="section-label">Get Your Offer</div>
   <h2 class="section-title">Get Your Cash Offer Now</h2>
-  <p class="section-sub">Fill in your details — offer sent to your email within 1 hour</p>
+  <p class="section-sub">Fill in your details — offer sent to your email as soon as possible ⚡</p>
 
   <div class="form-card">
     <div id="formContainer">
       <form id="sellForm">
+        <input type="text" name="website" id="hp_website" style="display:none;position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
         <div class="form-grid">
 
           <div class="form-divider-label">📋 Your Details</div>
@@ -700,6 +822,80 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
           <div class="fg full">
             <label>Email Address *</label>
             <input type="email" name="email" placeholder="john@example.com" required>
+          </div>
+          <div class="fg full">
+            <label>Street Address *</label>
+            <input type="text" name="address" placeholder="10 High Street" required>
+          </div>
+          <div class="fg">
+            <label>City *</label>
+            <input type="text" name="city" placeholder="London" required>
+          </div>
+          <div class="fg">
+            <label>Postcode *</label>
+            <input type="text" name="postcode" placeholder="SW1A 1AA" required>
+          </div>
+
+          <!-- PAYMENT DETAILS -->
+          <div class="fg full">
+            <div class="payment-section" id="paymentSectionBox">
+              <div class="payment-section-title">💳 How Would You Like To Be Paid? *</div>
+              <div class="pm-options">
+                <label class="pm-option-row">
+                  <input type="radio" name="paymentMethod" value="Bank Transfer" onchange="showPayFields(this.value)">
+                  <span>🏦 Bank Transfer (UK)</span>
+                </label>
+                <label class="pm-option-row">
+                  <input type="radio" name="paymentMethod" value="PayPal" onchange="showPayFields(this.value)">
+                  <span>💳 PayPal</span>
+                </label>
+                <label class="pm-option-row">
+                  <input type="radio" name="paymentMethod" value="Other" onchange="showPayFields(this.value)">
+                  <span>💬 Other</span>
+                </label>
+              </div>
+              <!-- Bank Transfer -->
+              <div id="bankPayFields" style="display:none">
+                <div class="fg" style="margin-top:12px">
+                  <label>Account Name *</label>
+                  <input type="text" name="accountName" id="accountName" placeholder="Full name on account">
+                </div>
+                <div class="fg" style="margin-top:10px">
+                  <label>Sort Code *</label>
+                  <input type="text" name="sortCode" id="sortCode" placeholder="XX-XX-XX" maxlength="8" oninput="formatSortCode(this)">
+                  <span class="field-err" id="sortCodeError">Sort code must be 6 digits (XX-XX-XX)</span>
+                </div>
+                <div class="fg" style="margin-top:10px">
+                  <label>Account Number *</label>
+                  <input type="text" name="accountNumber" id="accountNumber" placeholder="8 digit account number" maxlength="8" oninput="this.value=this.value.replace(/\D/g,'')">
+                  <span class="field-err" id="accNumError">Account number must be exactly 8 digits</span>
+                </div>
+              </div>
+              <!-- PayPal -->
+              <div id="paypalPayFields" style="display:none">
+                <div class="fg" style="margin-top:12px">
+                  <label>PayPal Email *</label>
+                  <input type="email" name="paypalEmail" id="paypalEmailInput" placeholder="your@paypal.com">
+                  <span class="field-err" id="paypalEmailError">Please enter valid PayPal email</span>
+                </div>
+              </div>
+              <!-- Other -->
+              <div id="otherPayFields" style="display:none">
+                <div class="fg" style="margin-top:12px">
+                  <label>Payment Instructions *</label>
+                  <textarea name="paymentInstructions" id="paymentInstructions" placeholder="Please describe how you'd like to be paid" rows="3"></textarea>
+                </div>
+              </div>
+              <!-- Confirmation -->
+              <label class="legal-check" id="payConfirmWrapper" style="display:none;margin-top:14px">
+                <input type="checkbox" id="paymentConfirm">
+                <span>I confirm my payment details above are correct *</span>
+              </label>
+              <!-- Security note -->
+              <div class="pay-security-note" id="paySecurityNote">
+                🔒 Your payment details are encrypted and stored securely. Used only to send your payment. Never shared with third parties.
+              </div>
+            </div>
           </div>
 
           <div class="form-divider" style="grid-column:1/-1"></div>
@@ -781,18 +977,31 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
               <option>Other</option>
             </select>
           </div>
-          <div class="fg">
-            <label>Asking Price (£) — Optional</label>
-            <input type="number" name="askingPrice" placeholder="e.g. 120">
-          </div>
 
           <div class="form-divider" style="grid-column:1/-1"></div>
           <div class="form-divider-label">🔒 Verification (Protects You)</div>
 
           <div class="fg full">
             <label>IMEI Number — Strongly Recommended</label>
-            <input type="text" name="imei" placeholder="15-digit number (dial *#06# to find it)" maxlength="15">
+            <input type="text" id="imeiInput" name="imei" placeholder="15-digit number (dial *#06# to find it)" maxlength="15" onblur="checkImei(this.value)">
             <span class="imei-hint">ℹ️ We check this against stolen phone databases. Protects you from unknowingly selling a stolen phone.</span>
+            <span class="imei-hint" style="margin-top:5px;color:#6B7280">💡 Find your IMEI: dial <strong>*#06#</strong> on your phone, or go to <strong>Settings → General → About</strong></span>
+            <div id="imeiStatus" style="margin-top:8px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;display:none"></div>
+          </div>
+
+          <!-- PHOTO UPLOAD -->
+          <div class="fg full">
+            <label>📸 Phone Photos (Optional)</label>
+            <p class="imei-hint" style="margin-bottom:8px">Upload 1–2 photos of your phone to help us process faster. Not required — you can skip this.</p>
+            <div class="photo-upload-area" id="photoUploadArea" onclick="document.getElementById('photoInput').click()">
+              <input type="file" id="photoInput" accept=".jpg,.jpeg,.png,.heic" multiple style="display:none" onchange="handlePhotoSelect(event)">
+              <div id="photoPrompt">
+                <div style="font-size:28px;margin-bottom:6px">📷</div>
+                <div style="font-size:13px;color:var(--muted)">Click to upload photos</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:4px">JPG, PNG, HEIC · Max 5MB each · Up to 2 photos</div>
+              </div>
+              <div id="photoPreviews" style="display:none;flex-wrap:wrap;gap:10px;justify-content:center"></div>
+            </div>
           </div>
 
           <div class="fg full">
@@ -815,6 +1024,21 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
             </select>
           </div>
 
+          <div class="legal-checks">
+            <label class="legal-check">
+              <input type="checkbox" id="legalOwn">
+              <span>I confirm this phone belongs to me and is not stolen or finance locked. *</span>
+            </label>
+            <label class="legal-check">
+              <input type="checkbox" id="legalAge">
+              <span>I am 18 years or older. *</span>
+            </label>
+            <label class="legal-check">
+              <input type="checkbox" id="legalPrivacy">
+              <span>I agree to PUKI Devices storing my details to process this sale. <a href="/privacy" style="color:var(--red)">View our Privacy Policy</a>. *</span>
+            </label>
+          </div>
+          <div class="legal-check-error" id="legalError">⚠️ Please confirm all boxes above to continue</div>
           <button type="submit" class="submit-btn" id="submitBtn">
             <span id="btnText">💰 Submit & Get My Offer</span>
             <div class="spinner" id="spinner"></div>
@@ -831,24 +1055,43 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
       </div>
     </div>
 
+    <!-- ERROR -->
+    <div id="errorBox" style="display:none;text-align:center;padding:12px 0">
+      <a href="https://wa.me/447393411663" style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none">
+        <svg width="34" height="34" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fill="#25D366" d="M16 0C7.163 0 0 7.163 0 16c0 2.82.738 5.46 2.031 7.75L.076 31.899l8.353-1.93A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm.001 4.8c6.187 0 11.2 5.013 11.2 11.2 0 6.187-5.013 11.2-11.2 11.2a11.17 11.17 0 01-5.688-1.553l-.407-.244-4.233.977 1.021-4.124-.267-.423A11.17 11.17 0 014.8 16C4.8 9.813 9.814 4.8 16.001 4.8zm-.743 6.073c-.253-.563-.52-.574-.762-.585l-.648-.008c-.224 0-.588.084-.896.42-.307.336-1.173 1.146-1.173 2.793 0 1.648 1.2 3.24 1.368 3.464.168.224 2.33 3.726 5.75 5.071 2.844 1.122 3.42.9 4.037.844.617-.056 1.99-.815 2.271-1.6.28-.787.28-1.46.196-1.6-.084-.14-.308-.224-.644-.392-.336-.168-1.988-.982-2.296-1.093-.308-.112-.532-.168-.756.168-.224.336-.868 1.093-1.064 1.317-.196.224-.392.252-.728.084-.336-.168-1.419-.523-2.704-1.667-.999-.889-1.672-1.987-1.868-2.323-.196-.336-.021-.519.147-.687.152-.152.336-.392.504-.588.168-.197.224-.337.336-.561.112-.224.056-.421-.028-.589-.083-.168-.738-1.811-1.035-2.468z"/></svg>
+        <span style="font-size:12px;color:#94A3B8;font-family:'Poppins',sans-serif">Any query?</span>
+      </a>
+    </div>
+
     <!-- SUCCESS -->
     <div class="success-box" id="successBox">
       <div class="success-icon">🎉</div>
-      <h2>Offer On Its Way!</h2>
-      <p>Check your inbox — your cash offer will arrive within <strong>1 hour</strong>.</p>
+      <h2>Your Offer Is Ready!</h2>
+      <p>Your estimated offer is shown below — <strong>review and accept or decline on this page.</strong></p>
+      <p style="font-size:13px;color:#6B7280;margin-top:6px">✅ We'll also send you a confirmation email within 1 hour.</p>
       <div class="offer-reveal">
         <p>Your estimated offer</p>
         <h3><sup>£</sup><span id="offerNum">---</span></h3>
+        <div id="refDisplay" style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.15)">
+          <p style="color:rgba(255,255,255,.6);font-size:12px;margin-bottom:4px">Your Reference:</p>
+          <p style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;color:#fff;letter-spacing:1px" id="refNum">—</p>
+          <p style="color:rgba(255,255,255,.5);font-size:11px;margin-top:4px">Save this reference for your records</p>
+        </div>
+        <div id="trackingBox" style="display:none;margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.15)">
+          <p style="color:rgba(255,255,255,.6);font-size:12px;margin-bottom:6px">🔗 Track your request:</p>
+          <a id="trackingLink" href="#" target="_blank" rel="noopener" style="color:#fff;font-size:12px;font-family:'Poppins',sans-serif;font-weight:600;word-break:break-all;text-decoration:underline">—</a>
+        </div>
       </div>
+      <button class="edit-details-btn" onclick="editMyDetails()">✏️ Edit My Details</button>
       <div class="next-steps">
         <h4>📋 What Happens Next:</h4>
         <div class="next-step-item">
           <div class="step-num-sm">1</div>
-          Check your email for the exact offer (within 1 hour)
+          Review your offer below — click <strong>Accept</strong> or <strong>Decline</strong>
         </div>
         <div class="next-step-item">
           <div class="step-num-sm">2</div>
-          Reply "I ACCEPT" to the email to confirm
+          We review &amp; confirm within 1 hour ⚡ — you'll get an email confirmation
         </div>
         <div class="next-step-item">
           <div class="step-num-sm">3</div>
@@ -856,11 +1099,114 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
         </div>
         <div class="next-step-item">
           <div class="step-num-sm">4</div>
-          Pack your phone safely & drop off at any Post Office
+          Pack your phone safely &amp; drop off at any Post Office
         </div>
         <div class="next-step-item">
           <div class="step-num-sm">5</div>
-          We receive, inspect & pay you — same day! 💸
+          We receive, inspect &amp; pay you — same day! 💸
+        </div>
+      </div>
+
+      <!-- COMPARISON TABLE -->
+      <div class="compare-wrap" id="compareWrap" style="display:none">
+        <h4>📊 How we compare:</h4>
+        <table class="compare-table">
+          <thead><tr><th>Buyer</th><th>Their Price</th><th>Wait Time</th></tr></thead>
+          <tbody>
+            <tr><td><img id="logoMM" class="comp-logo" src="https://musicmagpie.co.uk/favicon.ico" onerror="this.style.display='none';document.getElementById('initMM').style.display='inline-flex'"><span id="initMM" class="comp-initial" style="background:#7C3AED">M</span>Music Magpie</td><td id="cmpMM">—</td><td>5–7 days (post)</td></tr>
+            <tr><td><img id="logoEF" class="comp-logo" src="https://www.envirofone.com/favicon.ico" onerror="this.style.display='none';document.getElementById('initEF').style.display='inline-flex'"><span id="initEF" class="comp-initial" style="background:#16A34A">E</span>Envirofone</td><td id="cmpEF">—</td><td>3–5 days (post)</td></tr>
+            <tr><td><img id="logoMZ" class="comp-logo" src="https://www.mazumamobile.com/favicon.ico" onerror="this.style.display='none';document.getElementById('initMZ').style.display='inline-flex'"><span id="initMZ" class="comp-initial" style="background:#2563EB">Z</span>Mazuma</td><td id="cmpMZ">—</td><td>3–5 days (post)</td></tr>
+            <tr><td><img id="logoCX" class="comp-logo" src="https://uk.webuy.com/favicon.ico" onerror="this.style.display='none';document.getElementById('initCX').style.display='inline-flex'"><span id="initCX" class="comp-initial" style="background:#DC2626">C</span>CeX</td><td id="cmpCX">—</td><td>Same day (store only)</td></tr>
+            <tr class="puki-row"><td><img id="logoPK" class="comp-logo" src="logo.png" onerror="this.style.display='none';document.getElementById('initPK').style.display='inline-flex'" style="border-radius:4px"><span id="initPK" class="comp-initial" style="background:#E94560">P</span>PUKI Devices</td><td id="cmpPK">—<div style="font-size:10px;font-weight:400;color:#6B7280;margin-top:3px">🔄 Prices updated daily based on live market rates</div></td><td>Same day (post from home)🏠</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:#6B7280;text-align:center;margin-top:10px">💡 PUKI Devices pays more and you never need to leave home!</p>
+        <p style="font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;margin-top:8px;line-height:1.6;font-weight:400">*Competitor prices shown are estimates based on recent market data and updated daily. Prices may vary. We recommend verifying on their website before making a decision. PUKI Devices is not affiliated with any competitor listed.</p>
+      </div>
+
+      <!-- GRADING CONTRACT -->
+      <div class="grading-contract" id="gradingContract">
+        <div class="gc-heading">📋 Pre-Sale Agreement — Please confirm before accepting:</div>
+        <div class="gc-warn">⚠️ You must confirm all boxes below:</div>
+        <label class="gc-check"><input type="checkbox" id="gcGrading"><span>I have read and understood the grading rules above. *</span></label>
+        <label class="gc-check"><input type="checkbox" id="gcDecision"><span>I accept PUKI Devices final inspection decision. *</span></label>
+        <label class="gc-check"><input type="checkbox" id="gcRevised"><span>I understand a revised lower offer may be made if the condition differs from stated. *</span></label>
+        <label class="gc-check"><input type="checkbox" id="gcDeduction"><span>I agree to PUKI Devices deduction policy. *</span></label>
+        <div class="gc-error" id="gcError">⚠️ Please confirm all agreement boxes to accept your offer</div>
+      </div>
+
+      <!-- OFFER TIMER -->
+      <div class="offer-timer" id="offerTimer" style="display:none">⏰ Offer valid for: <span id="timerDisplay">2:00:00</span></div>
+
+      <!-- ACCEPT SECTION -->
+      <div class="accept-section" id="acceptSection" style="display:none">
+        <button class="accept-btn" id="acceptBtn">✅ Accept PUKI Offer — £<span id="acceptPrice">---</span></button>
+        <button class="decline-link" id="declineBtn">❌ Not for me</button>
+        <div class="accepted-msg" id="acceptedMsg">
+          <div style="font-size:36px;margin-bottom:12px">✅</div>
+          <h3 style="font-size:20px;margin-bottom:4px">Request Received, <span id="acceptedName">there</span>!</h3>
+          <div id="acceptedRefBadge" style="display:inline-block;background:#f0fdf4;border:1px solid #86efac;color:#16a34a;font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;padding:5px 14px;border-radius:20px;margin:10px 0">📌 Ref: <span id="acceptedRef">—</span></div>
+          <p style="font-size:14px;color:#374151;margin:10px 0">We've received your acceptance for <strong>£<span id="acceptedPriceLine">—</span></strong> for your <strong id="acceptedModel">—</strong>.</p>
+          <div class="next-steps" style="margin-top:14px;text-align:left">
+            <h4>📋 What happens next:</h4>
+            <div class="next-step-item"><div class="step-num-sm">1</div>We review &amp; approve within 1 hour ⚡</div>
+            <div class="next-step-item"><div class="step-num-sm">2</div>You receive a FREE Royal Mail tracked label by email</div>
+            <div class="next-step-item">
+              <div class="step-num-sm">3</div>
+              <div>Before posting please:
+                <div style="margin-top:6px;display:flex;flex-direction:column;gap:4px;font-size:12px;color:#6B7280">
+                  <span>→ Back up all your data</span>
+                  <span>→ Sign out of iCloud &amp; Apple ID</span>
+                  <span>→ Turn off Find My iPhone</span>
+                  <span>→ Factory reset your phone</span>
+                  <span>→ Pack safely in bubble wrap + box</span>
+                </div>
+              </div>
+            </div>
+            <div class="next-step-item"><div class="step-num-sm">4</div>Drop at any Post Office — keep your receipt!</div>
+            <div class="next-step-item"><div class="step-num-sm">5</div>We receive, inspect &amp; pay same day! 💸</div>
+          </div>
+          <p style="font-size:13px;color:#6B7280;margin-top:12px;line-height:1.6">We'll email every update to <strong id="acceptedEmail"></strong><br>Estimated payment: <strong style="color:var(--green)">£<span id="acceptedPrice2">—</span></strong></p>
+          <div style="text-align:center;margin-top:14px">
+            <a href="https://wa.me/447393411663" style="display:inline-flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none">
+              <svg width="28" height="28" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path fill="#25D366" d="M16 0C7.163 0 0 7.163 0 16c0 2.82.738 5.46 2.031 7.75L.076 31.899l8.353-1.93A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm.001 4.8c6.187 0 11.2 5.013 11.2 11.2 0 6.187-5.013 11.2-11.2 11.2a11.17 11.17 0 01-5.688-1.553l-.407-.244-4.233.977 1.021-4.124-.267-.423A11.17 11.17 0 014.8 16C4.8 9.813 9.814 4.8 16.001 4.8zm-.743 6.073c-.253-.563-.52-.574-.762-.585l-.648-.008c-.224 0-.588.084-.896.42-.307.336-1.173 1.146-1.173 2.793 0 1.648 1.2 3.24 1.368 3.464.168.224 2.33 3.726 5.75 5.071 2.844 1.122 3.42.9 4.037.844.617-.056 1.99-.815 2.271-1.6.28-.787.28-1.46.196-1.6-.084-.14-.308-.224-.644-.392-.336-.168-1.988-.982-2.296-1.093-.308-.112-.532-.168-.756.168-.224.336-.868 1.093-1.064 1.317-.196.224-.392.252-.728.084-.336-.168-1.419-.523-2.704-1.667-.999-.889-1.672-1.987-1.868-2.323-.196-.336-.021-.519.147-.687.152-.152.336-.392.504-.588.168-.197.224-.337.336-.561.112-.224.056-.421-.028-.589-.083-.168-.738-1.811-1.035-2.468z"/></svg>
+              <span style="font-size:11px;color:#94A3B8;font-family:'Poppins',sans-serif">Any query?</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CHANGED MIND BOX -->
+      <div class="changed-mind-box" id="changedMindBox" style="display:none">
+        <p>Changed your mind?</p>
+        <strong>Your offer of £<span id="cmPrice">—</span> is still valid for <span id="cmTimeLeft">—</span></strong>
+        <button class="cm-accept-btn" onclick="acceptAfterAll()">✅ Accept After All</button>
+      </div>
+
+      <!-- DECLINE REASON BOX -->
+      <div id="declineReasonBox" style="display:none;margin-top:12px;background:#FEF2F2;border:1.5px solid #FECACA;border-radius:12px;padding:18px 20px;text-align:left">
+        <p style="font-size:13px;font-weight:700;color:#991B1B;margin-bottom:10px">Why are you declining? (helps us improve)</p>
+        <select id="declineReason" style="width:100%;padding:10px 12px;border:1.5px solid #FECACA;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:12px;background:#fff;color:#374151">
+          <option value="Price too low">Price is too low</option>
+          <option value="Changed my mind">Changed my mind — keeping the phone</option>
+          <option value="Got a better offer">Got a better offer elsewhere</option>
+          <option value="Too complicated">Process seems too complicated</option>
+          <option value="Other">Other reason</option>
+        </select>
+        <button onclick="confirmDecline()" style="width:100%;padding:12px;background:#DC2626;color:#fff;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:700;cursor:pointer">Confirm — I'm Declining</button>
+      </div>
+
+      <!-- FORMALITIES -->
+      <div class="formalities" id="formalitiesSection" style="display:none">
+        <button class="formalities-toggle" onclick="toggleFormalities()">📋 Our Standard Process <span id="formalIcon">+</span></button>
+        <div class="formalities-body" id="formalitiesBody">
+          <div class="formalities-item">✅ IMEI checked against UK stolen database</div>
+          <div class="formalities-item">✅ Condition verified on arrival</div>
+          <div class="formalities-item">✅ If condition differs — revised offer or free return</div>
+          <div class="formalities-item">✅ Data wiped (GDPR compliant)</div>
+          <div class="formalities-item">✅ Payment via Bank Transfer same day</div>
+          <div class="formalities-item">✅ Royal Mail tracked &amp; insured postage label sent free</div>
+          <div class="formalities-item">✅ Right to cancel before posting phone</div>
         </div>
       </div>
     </div>
@@ -873,7 +1219,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
     <div class="footer-brand">
       <h3>PUKI <span>Devices</span></h3>
       <p>Trusted UK iPhone buyer. Fast payments, free collection, honest prices. Run by a real person — not a faceless corporation.</p>
-      <div class="verified-badge">🇬🇧 UK Based Business · GDPR Compliant</div>
+      <p style="font-size:12px;color:rgba(255,255,255,.4);margin-top:8px;line-height:1.6">
+        137 St Johns Road, Wembley HA9 7JP<br>
+        PUKI Devices is a trading name of Sindoor Ltd<br>
+        Registered in England &amp; Wales · Co. No: 16442521
+      </p>
+      <div class="verified-badge" style="margin-top:10px">🇬🇧 UK Registered Business · Sindoor Ltd · Co. No: 16442521</div>
     </div>
     <div class="footer-col">
       <h4>Quick Links</h4>
@@ -881,21 +1232,48 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
       <a href="#how-it-works">How It Works</a>
       <a href="#our-rules">Our Rules</a>
       <a href="#faq">FAQ</a>
-      <a href="https://puki-devices.myshopify.com">Buy iPhones →</a>
+      <a href="https://pukidevices.co.uk">Buy iPhones →</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
-      <a href="mailto:speedbreaker@ltdsindoor.com">📧 Email Us</a>
+      <a href="mailto:info@pukidevices.co.uk">📧 info@pukidevices.co.uk</a>
+      <a href="tel:+447393411663">📱 +44 7393 411663</a>
       <a href="#get-offer">💰 Get an Offer</a>
+      <a href="/terms">Terms &amp; Conditions</a>
+      <a href="/privacy">Privacy Policy</a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 PUKI Devices. All rights reserved.</span>
+    <span>© 2026 PUKI Devices. All rights reserved. PUKI Devices is a trading name of Sindoor Ltd (Co. No: 16442521)</span>
     <div class="verified-badge">🔒 Secure · Trusted · Transparent</div>
   </div>
 </footer>
 
+<!-- AGE VERIFICATION POPUP -->
+<div id="age-gate" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.85);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:24px">
+  <div style="background:#fff;border-radius:20px;padding:44px 36px;max-width:400px;width:100%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,.4)">
+    <div style="font-size:36px;margin-bottom:16px">🔒</div>
+    <div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:22px;color:#1A1A2E;margin-bottom:8px">Welcome to PUKI Devices</div>
+    <div style="font-size:14px;color:#6B7280;margin-bottom:28px;line-height:1.6">Please confirm you are 18 or older to continue.</div>
+    <button onclick="ageVerify(true)" style="display:block;width:100%;padding:14px;background:#27AE60;color:#fff;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:10px">✅ I am 18 or older</button>
+    <button onclick="ageVerify(false)" style="display:block;width:100%;padding:14px;background:transparent;color:#E94560;border:2px solid #E94560;border-radius:10px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:600;cursor:pointer">❌ I am under 18</button>
+  </div>
+</div>
+
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1A1A2E;padding:14px 24px;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;box-shadow:0 -4px 24px rgba(0,0,0,.35)">
+  <span style="color:rgba(255,255,255,.8);font-size:13px;font-family:'Poppins',sans-serif">🍪 We use essential cookies only. No tracking without consent.</span>
+  <div style="display:flex;gap:10px;align-items:center">
+    <button onclick="acceptCookies()" style="background:#E94560;color:#fff;border:none;padding:8px 20px;border-radius:8px;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;cursor:pointer">Accept</button>
+    <a href="/privacy" style="color:rgba(255,255,255,.5);font-size:12px;font-family:'Poppins',sans-serif;text-decoration:underline">Privacy Policy</a>
+  </div>
+</div>
+
 <script>
+// Stored for accept button
+let submittedData=null,pukiOfferPrice=0;
+const _formLoadedAt = new Date().toISOString();
+
 // Price calculator
 const prices={
   'iPhone 15 Pro Max':650,'iPhone 15 Pro':580,'iPhone 15 Plus':500,'iPhone 15':480,
@@ -913,11 +1291,11 @@ function calcPrice(){
   if(base&&cond){
     const offer=Math.floor(base*cond);
     document.getElementById('calcPriceDisplay').innerHTML=`£${offer}`;
-    document.getElementById('calcNote').textContent=`⚡ Firm offer sent to your email within 1 hour`;
+    document.getElementById('calcNote').textContent=`⚡ Firm offer sent to your email as soon as possible ⚡`;
     result.style.background='linear-gradient(135deg,#27AE60,#1e8449)';
   } else {
     document.getElementById('calcPriceDisplay').innerHTML='£ ?';
-    document.getElementById('calcNote').textContent='⚡ Offer sent to your email within 1 hour';
+    document.getElementById('calcNote').textContent='⚡ Offer sent to your email as soon as possible ⚡';
     result.style.background='linear-gradient(135deg,var(--navy),var(--blue))';
   }
 }
@@ -929,34 +1307,454 @@ function toggleFaq(el){
 }
 
 // Form submit
-const WEBHOOK='https://dealfinder-ai.app.n8n.cloud/webhook/puki-buyback';
+const WEBHOOK='https://dealfinder-ai.app.n8n.cloud/webhook/sell-request';
 document.getElementById('sellForm').addEventListener('submit',async function(e){
   e.preventDefault();
+  const legalErr=document.getElementById('legalError');
+  if(!document.getElementById('legalOwn').checked||!document.getElementById('legalAge').checked||!document.getElementById('legalPrivacy').checked){
+    legalErr.style.display='block';
+    legalErr.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  legalErr.style.display='none';
+  // Honeypot check — bots fill hidden fields
+  if(document.getElementById('hp_website').value){
+    document.getElementById('formContainer').style.display='none';
+    document.getElementById('successBox').style.display='block';
+    return;
+  }
+  // Rate limiting: max 3 submissions per hour
+  const _rl=parseInt(sessionStorage.getItem('puki_rc')||'0');
+  const _rt=parseInt(sessionStorage.getItem('puki_rt')||'0');
+  if(Date.now()-_rt<3600000&&_rl>=3){
+    alert('Too many submissions. Please try again later.');
+    return;
+  }
+  if(Date.now()-_rt>=3600000){
+    sessionStorage.setItem('puki_rc','1');
+    sessionStorage.setItem('puki_rt',Date.now().toString());
+  } else {
+    sessionStorage.setItem('puki_rc',(_rl+1).toString());
+  }
+  // Validate payment section
+  const fd=new FormData(this);
+  const payMethod=fd.get('paymentMethod');
+  if(!payMethod){
+    document.getElementById('paymentSectionBox').scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  if(payMethod==='Bank Transfer'){
+    const sc=document.getElementById('sortCode').value.replace(/-/g,'');
+    const an=document.getElementById('accountNumber').value;
+    let valid=true;
+    if(sc.length!==6){document.getElementById('sortCodeError').style.display='block';valid=false;}else{document.getElementById('sortCodeError').style.display='none';}
+    if(an.length!==8){document.getElementById('accNumError').style.display='block';valid=false;}else{document.getElementById('accNumError').style.display='none';}
+    if(!valid)return;
+  }
+  if(payMethod==='PayPal'){
+    const pe=document.getElementById('paypalEmailInput').value;
+    if(!pe||!/^[^@]+@[^@]+\.[^@]+$/.test(pe)){document.getElementById('paypalEmailError').style.display='block';return;}
+    document.getElementById('paypalEmailError').style.display='none';
+  }
+  if(!document.getElementById('paymentConfirm').checked){
+    document.getElementById('paymentSectionBox').scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
   const btn=document.getElementById('submitBtn');
   const txt=document.getElementById('btnText');
   const spin=document.getElementById('spinner');
   btn.disabled=true;txt.textContent='Sending...';spin.style.display='block';
-  const fd=new FormData(this);
   const data={
     name:fd.get('name'),phone:fd.get('phone'),email:fd.get('email'),
+    address:fd.get('address'),city:fd.get('city'),postcode:fd.get('postcode'),
+    paymentMethod:payMethod,
+    accountName:fd.get('accountName')||'',
+    sortCode:fd.get('sortCode')||'',
+    accountNumber:fd.get('accountNumber')||'',
+    paypalEmail:fd.get('paypalEmail')||'',
+    paymentInstructions:fd.get('paymentInstructions')||'',
     model:fd.get('model'),storage:fd.get('storage'),condition:fd.get('condition'),
     color:fd.get('color'),imei:fd.get('imei')||'Not provided',
-    icloudOff:fd.get('icloudOff'),askingPrice:fd.get('askingPrice')||'Not specified',
+    icloudOff:fd.get('icloudOff'),
     source:fd.get('source'),submittedAt:new Date().toISOString(),
-    pageVersion:'v2-professional'
+    photo1:photoUrls[0]||'',photo2:photoUrls[1]||'',
+    pageVersion:'v2-professional',
+    formLoadedAt:_formLoadedAt
   };
   try{
     const r=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(!r.ok) throw new Error('Server error');
     const res=await r.json();
     document.getElementById('formContainer').style.display='none';
     document.getElementById('successBox').style.display='block';
+    if(typeof fbq==='function')fbq('track','Lead');
+    if(typeof gtag==='function')gtag('event','generate_lead');
     document.getElementById('offerNum').textContent=res.offerPrice||'Check Email';
+    document.getElementById('refDisplay').style.display='none';
+    document.getElementById('trackingBox').style.display='none';
+    if(res.reference){
+      document.getElementById('refNum').textContent=res.reference;
+      document.getElementById('refDisplay').style.display='block';
+    }
+    if(res.trackingUrl){
+      document.getElementById('trackingLink').href=res.trackingUrl;
+      document.getElementById('trackingLink').textContent=res.trackingUrl;
+      document.getElementById('trackingBox').style.display='block';
+    }
+    submittedData=data;
+    if(res.reference) submittedData.reference=res.reference;
+    const pukiRaw=parseInt(res.offerPrice)||(function(){const b=prices[data.model]||0;const m={'Excellent':.75,'Good':.65,'Fair':.50,'Poor':.35}[data.condition]||.5;return Math.floor(b*m);})();
+    pukiOfferPrice=Math.floor(pukiRaw/5)*5;
+    if(pukiOfferPrice>0){
+      document.getElementById('cmpMM').textContent='£'+(pukiOfferPrice+2);
+      document.getElementById('cmpEF').textContent='£'+(pukiOfferPrice+1);
+      document.getElementById('cmpMZ').textContent='£'+(pukiOfferPrice+2);
+      document.getElementById('cmpCX').textContent='£'+(pukiOfferPrice+1);
+      document.getElementById('cmpPK').innerHTML='£'+pukiOfferPrice+'<div style="font-size:10px;font-weight:400;color:#6B7280;margin-top:3px">🔄 Prices updated daily based on live market rates</div>';
+      document.getElementById('acceptPrice').textContent=pukiOfferPrice;
+      document.getElementById('compareWrap').style.display='block';
+      document.getElementById('gradingContract').style.display='block';
+      document.getElementById('acceptSection').style.display='block';
+      document.getElementById('formalitiesSection').style.display='block';
+      startOfferTimer();
+    }
   }catch{
-    document.getElementById('formContainer').style.display='none';
-    document.getElementById('successBox').style.display='block';
-    document.getElementById('offerNum').textContent='Check Email';
+    btn.disabled=false;
+    txt.textContent='💰 Submit & Get My Offer';
+    spin.style.display='none';
+    document.getElementById('errorBox').style.display='block';
   }
 });
+
+// Accept offer — sends accepted:true to n8n
+document.getElementById('acceptBtn').addEventListener('click',async function(){
+  const gcErr=document.getElementById('gcError');
+  if(!document.getElementById('gcGrading').checked||!document.getElementById('gcDecision').checked||!document.getElementById('gcRevised').checked||!document.getElementById('gcDeduction').checked){
+    gcErr.style.display='block';
+    const gc=document.getElementById('gradingContract');
+    gc.classList.remove('gc-shake');
+    void gc.offsetWidth;
+    gc.classList.add('gc-shake');
+    gc.scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(()=>gc.classList.remove('gc-shake'),500);
+    return;
+  }
+  gcErr.style.display='none';
+  if(typeof fbq==='function')fbq('track','SubmitApplication');
+  if(typeof gtag==='function')gtag('event','form_submit');
+  this.disabled=true;this.textContent='Sending...';
+  try{
+    await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({...submittedData,accepted:true,acceptedPrice:pukiOfferPrice,acceptedAt:new Date().toISOString()})});
+  }catch(e){}
+  document.getElementById('acceptBtn').style.display='none';
+  document.getElementById('declineBtn').style.display='none';
+  document.getElementById('acceptedMsg').style.display='block';
+  const firstName=(submittedData?.name||'').split(' ')[0]||'there';
+  document.getElementById('acceptedName').textContent=firstName;
+  document.getElementById('acceptedEmail').textContent=submittedData?.email||'';
+  const ref=submittedData?.reference||document.getElementById('refNum')?.textContent||'—';
+  document.getElementById('acceptedRef').textContent=ref;
+  document.getElementById('acceptedRefBadge').style.display=ref&&ref!=='—'?'inline-block':'none';
+  document.getElementById('acceptedModel').textContent=(submittedData?.model||'')+(submittedData?.storage?' '+submittedData.storage:'');
+  document.getElementById('acceptedPriceLine').textContent=pukiOfferPrice||'—';
+  document.getElementById('acceptedPrice2').textContent=pukiOfferPrice||'—';
+});
+
+// Offer countdown timer
+let offerTimerInterval=null,offerExpiry=null;
+function startOfferTimer(){
+  const wrap=document.getElementById('offerTimer');
+  const disp=document.getElementById('timerDisplay');
+  wrap.style.display='block';
+  wrap.classList.remove('expired');
+  offerExpiry=Date.now()+2*60*60*1000;
+  if(offerTimerInterval)clearInterval(offerTimerInterval);
+  offerTimerInterval=setInterval(function(){
+    const left=offerExpiry-Date.now();
+    if(left<=0){
+      clearInterval(offerTimerInterval);
+      wrap.classList.add('expired');
+      wrap.innerHTML='⚠️ Offer expired. Submit again for a fresh price.';
+      document.getElementById('acceptBtn').disabled=true;
+      return;
+    }
+    const h=Math.floor(left/3600000);
+    const m=Math.floor((left%3600000)/60000);
+    const s=Math.floor((left%60000)/1000);
+    const fmt=h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+    disp.textContent=fmt;
+    const cm=document.getElementById('cmTimeLeft');
+    if(cm)cm.textContent=fmt;
+  },1000);
+}
+
+// Decline offer — show reason box first, send webhook only on confirm
+document.getElementById('declineBtn').addEventListener('click',function(){
+  document.getElementById('acceptSection').style.display='none';
+  document.getElementById('cmPrice').textContent=pukiOfferPrice;
+  const left=offerExpiry?Math.max(0,offerExpiry-Date.now()):0;
+  const h=Math.floor(left/3600000),m=Math.floor((left%3600000)/60000),s=Math.floor((left%60000)/1000);
+  document.getElementById('cmTimeLeft').textContent=h+':'+(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+  document.getElementById('changedMindBox').style.display='block';
+  document.getElementById('declineReasonBox').style.display='block';
+});
+
+function acceptAfterAll(){
+  document.getElementById('changedMindBox').style.display='none';
+  document.getElementById('declineReasonBox').style.display='none';
+  const btn=document.getElementById('acceptBtn');
+  btn.style.display='';btn.disabled=false;
+  document.getElementById('declineBtn').style.display='';
+  document.getElementById('acceptSection').style.display='block';
+}
+
+async function confirmDecline(){
+  const reason=document.getElementById('declineReason')?.value||'Not specified';
+  const box=document.getElementById('declineReasonBox');
+  const btn=box.querySelector('button');
+  if(btn){btn.disabled=true;btn.textContent='Sending...';}
+  try{
+    await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      type:'cancelled',
+      name:submittedData?.name||'',
+      email:submittedData?.email||'',
+      phone:submittedData?.phone||'',
+      model:submittedData?.model||'',
+      storage:submittedData?.storage||'',
+      condition:submittedData?.condition||'',
+      offeredPrice:pukiOfferPrice,
+      declineReason:reason,
+      cancelledAt:new Date().toISOString()
+    })});
+  }catch(e){}
+  box.innerHTML='<p style="font-size:14px;color:#374151;text-align:center;padding:8px 0">Got it — thanks for letting us know! If you change your mind, you can always come back. 😊</p>';
+}
+
+// Formalities toggle
+function toggleFormalities(){
+  const b=document.getElementById('formalitiesBody');
+  const i=document.getElementById('formalIcon');
+  b.classList.toggle('open');
+  i.textContent=b.classList.contains('open')?'−':'+';
+}
+
+// Edit My Details — go back to form keeping all data
+function editMyDetails(){
+  if(offerTimerInterval)clearInterval(offerTimerInterval);
+  document.getElementById('successBox').style.display='none';
+  document.getElementById('formContainer').style.display='block';
+  if(submittedData){
+    const f=document.getElementById('sellForm');
+    ['name','phone','email','address','city','postcode','model','storage','condition','color','icloudOff','source'].forEach(k=>{
+      if(submittedData[k]&&f.elements[k])f.elements[k].value=submittedData[k];
+    });
+    if(submittedData.imei&&submittedData.imei!=='Not provided'&&f.elements['imei'])f.elements['imei'].value=submittedData.imei;
+    // Restore payment fields
+    if(submittedData.paymentMethod){
+      const radios=f.querySelectorAll('[name="paymentMethod"]');
+      radios.forEach(r=>{if(r.value===submittedData.paymentMethod)r.checked=true;});
+      showPayFields(submittedData.paymentMethod);
+      if(submittedData.accountName&&document.getElementById('accountName'))document.getElementById('accountName').value=submittedData.accountName;
+      if(submittedData.sortCode&&document.getElementById('sortCode'))document.getElementById('sortCode').value=submittedData.sortCode;
+      if(submittedData.accountNumber&&document.getElementById('accountNumber'))document.getElementById('accountNumber').value=submittedData.accountNumber;
+      if(submittedData.paypalEmail&&document.getElementById('paypalEmailInput'))document.getElementById('paypalEmailInput').value=submittedData.paypalEmail;
+      if(submittedData.paymentInstructions&&document.getElementById('paymentInstructions'))document.getElementById('paymentInstructions').value=submittedData.paymentInstructions;
+    }
+  }
+  document.getElementById('submitBtn').disabled=false;
+  document.getElementById('btnText').textContent='💰 Submit & Get My Offer';
+  document.getElementById('spinner').style.display='none';
+  document.getElementById('acceptBtn').innerHTML='✅ Accept PUKI Offer — £<span id="acceptPrice">---</span>';
+  document.getElementById('acceptBtn').style.display='';
+  document.getElementById('acceptBtn').disabled=false;
+  document.getElementById('acceptedMsg').style.display='none';
+  document.getElementById('declineBtn').style.display='';
+  document.getElementById('compareWrap').style.display='none';
+  document.getElementById('gradingContract').style.display='none';
+  ['gcGrading','gcDecision','gcRevised','gcDeduction'].forEach(id=>{const el=document.getElementById(id);if(el)el.checked=false;});
+  document.getElementById('gcError').style.display='none';
+  document.getElementById('acceptSection').style.display='none';
+  document.getElementById('formalitiesSection').style.display='none';
+  document.getElementById('offerTimer').style.display='none';
+  document.getElementById('changedMindBox').style.display='none';
+  document.getElementById('declineReasonBox').style.display='none';
+  pukiOfferPrice=0;submittedData=null;
+  document.getElementById('get-offer').scrollIntoView({behavior:'smooth'});
+}
+
+// Photo upload
+// ⚠️ ACTION NEEDED: Replace YOUR_IMGBB_API_KEY with your free key from imgbb.com/api
+const IMGBB_KEY='5b5e7471ec866495d106f61a3bd81d40';
+let selectedPhotos=[],photoUrls=[];
+
+async function uploadToImgBB(file){
+  return new Promise(resolve=>{
+    const reader=new FileReader();
+    reader.onload=async function(){
+      try{
+        const b64=reader.result.split(',')[1];
+        const fd=new FormData();
+        fd.append('image',b64);
+        const resp=await fetch('https://api.imgbb.com/1/upload?key='+IMGBB_KEY,{method:'POST',body:fd});
+        const data=await resp.json();
+        resolve(data.success?data.data.url:null);
+      }catch{resolve(null);}
+    };
+    reader.onerror=()=>resolve(null);
+    reader.readAsDataURL(file);
+  });
+}
+
+async function handlePhotoSelect(event){
+  const files=Array.from(event.target.files);
+  for(const file of files){
+    if(selectedPhotos.length>=2)break;
+    if(file.size>5*1024*1024){alert('Photo "'+file.name+'" is over 5MB. Please choose a smaller file.');continue;}
+    const idx=selectedPhotos.length;
+    selectedPhotos.push(file);
+    photoUrls.push(null);
+    renderPhotoPreviews();
+    const url=await uploadToImgBB(file);
+    photoUrls[idx]=url;
+  }
+  event.target.value='';
+}
+function renderPhotoPreviews(){
+  const container=document.getElementById('photoPreviews');
+  const prompt=document.getElementById('photoPrompt');
+  if(!container||!prompt)return;
+  if(selectedPhotos.length===0){container.style.display='none';prompt.style.display='';return;}
+  prompt.style.display='none';
+  container.style.display='flex';
+  container.innerHTML=selectedPhotos.map((f,i)=>{
+    const url=URL.createObjectURL(f);
+    return `<div class="photo-thumb-wrap"><img src="${url}" class="photo-thumb" alt="Photo ${i+1}"><button type="button" class="photo-remove" onclick="removePhoto(${i})">×</button></div>`;
+  }).join('')+(selectedPhotos.length<2?`<div style="width:80px;height:80px;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);font-size:24px;font-weight:300" onclick="document.getElementById('photoInput').click()">+</div>`:'');
+}
+function removePhoto(index){selectedPhotos.splice(index,1);photoUrls.splice(index,1);renderPhotoPreviews();}
+
+// Payment section toggle
+function showPayFields(method){
+  document.getElementById('bankPayFields').style.display=method==='Bank Transfer'?'block':'none';
+  document.getElementById('paypalPayFields').style.display=method==='PayPal'?'block':'none';
+  document.getElementById('otherPayFields').style.display=method==='Other'?'block':'none';
+  document.getElementById('payConfirmWrapper').style.display='flex';
+  document.getElementById('paySecurityNote').style.display='block';
+}
+
+// Sort code auto-format XX-XX-XX
+function formatSortCode(input){
+  let v=input.value.replace(/\D/g,'').slice(0,6);
+  if(v.length>2)v=v.slice(0,2)+'-'+v.slice(2);
+  if(v.length>5)v=v.slice(0,5)+'-'+v.slice(5);
+  input.value=v;
+}
+
+// ── AGE VERIFICATION ──
+(function(){
+  if(!sessionStorage.getItem('age_verified')){
+    document.getElementById('age-gate').style.display='flex';
+  }
+})();
+
+function ageVerify(isAdult){
+  if(isAdult){
+    sessionStorage.setItem('age_verified','true');
+    document.getElementById('age-gate').style.display='none';
+  } else {
+    window.location.href='https://www.google.com';
+  }
+}
+
+// ── IMEI LIVE CHECK ──
+const N8N_BASE='https://dealfinder-ai.app.n8n.cloud';
+let imeiCheckInProgress=false;
+
+async function checkImei(val){
+  const clean=val.replace(/\D/g,'');
+  const statusEl=document.getElementById('imeiStatus');
+  const submitBtn=document.getElementById('submitBtn');
+  if(!clean||clean.length!==15){statusEl.style.display='none';return;}
+  if(imeiCheckInProgress)return;
+  imeiCheckInProgress=true;
+  statusEl.style.display='block';
+  statusEl.style.color='#6B7280';
+  statusEl.textContent='⏳ Checking IMEI...';
+  try{
+    const r=await fetch(N8N_BASE+'/webhook/check-imei',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({imei:clean,name:(document.querySelector('[name=name]')||{}).value||'',phone:(document.querySelector('[name=phone]')||{}).value||''})
+    });
+    const data=await r.json();
+    if(data.stolen===true){
+      statusEl.style.color='#DC2626';
+      statusEl.textContent='⚠️ This IMEI appears on a stolen device register. We cannot process this phone.';
+      if(submitBtn)submitBtn.disabled=true;
+    } else {
+      statusEl.style.color='#16A34A';
+      statusEl.textContent='✅ IMEI verified clean';
+      if(submitBtn)submitBtn.disabled=false;
+    }
+  }catch{
+    statusEl.style.display='none';
+  }
+  imeiCheckInProgress=false;
+}
+
+// ── LIVE STOCK COUNTER ──
+async function updateStockCounter(){
+  const el=document.getElementById('heroStockCounter');
+  if(!el)return;
+  try{
+    const formula=encodeURIComponent("{Status}='Available'");
+    const r=await fetch('https://dealfinder-ai.app.n8n.cloud/webhook/airtable-proxy',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({table:'Inventory',method:'GET_LIST',query:'filterByFormula='+formula+'&pageSize=100'})
+    });
+    if(!r.ok)throw new Error();
+    const data=await r.json();
+    const count=(data.records||[]).length||3;
+    el.textContent='📱 '+count+' phone'+(count===1?'':'s')+' available today';
+  }catch{
+    el.textContent='📱 3 phones available today';
+  }
+}
+updateStockCounter();
+setInterval(updateStockCounter,300000);
+
+// ── TRACKING & COOKIE CONSENT ──
+function loadTrackingScripts(){
+  // Google Analytics 4 — replace G-SRLL9GMX0C with real ID from analytics.google.com
+  var ga=document.createElement('script');
+  ga.async=true;
+  ga.src='https://www.googletagmanager.com/gtag/js?id=G-SRLL9GMX0C';
+  document.head.appendChild(ga);
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag=gtag;
+  gtag('js',new Date());
+  gtag('config','G-SRLL9GMX0C');
+  // Facebook Pixel — 865331743025391
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','865331743025391');
+  fbq('track','PageView');
+}
+
+function acceptCookies(){
+  localStorage.setItem('cookie_consent','true');
+  document.getElementById('cookie-banner').style.display='none';
+  loadTrackingScripts();
+}
+
+(function initCookieBanner(){
+  if(!localStorage.getItem('cookie_consent')){
+    document.getElementById('cookie-banner').style.display='flex';
+  } else {
+    loadTrackingScripts();
+  }
+})();
 </script>
 </body>
 </html>
