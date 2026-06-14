@@ -965,6 +965,15 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
             </select>
           </div>
 
+          <!-- PRICE SUGGEST BOX -->
+          <div class="fg full" id="priceSuggestWrap" style="display:none">
+            <div style="background:#f0fdf4;border:1.5px solid #27AE60;border-left:4px solid #27AE60;border-radius:10px;padding:16px 18px">
+              <div id="priceSuggestLoading" style="display:none;color:#6B7280;font-size:13px;font-family:'Poppins',sans-serif">⏳ Getting your price estimate...</div>
+              <div id="priceSuggestMessage" style="font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:#27AE60"></div>
+              <div id="priceSuggestDisclaimer" style="font-size:11px;color:#6B7280;margin-top:6px;line-height:1.6"></div>
+            </div>
+          </div>
+
           <div class="fg">
             <label>Colour</label>
             <select name="color">
@@ -1786,6 +1795,45 @@ function acceptCookies(){
   document.getElementById('cookie-banner').style.display='none';
   loadTrackingScripts();
 }
+
+// ── PRICE SUGGEST ──
+(function(){
+  const modelSel=document.querySelector('select[name="model"]');
+  const storageSel=document.querySelector('select[name="storage"]');
+  const conditionSel=document.querySelector('select[name="condition"]');
+  const wrap=document.getElementById('priceSuggestWrap');
+  const loading=document.getElementById('priceSuggestLoading');
+  const messageEl=document.getElementById('priceSuggestMessage');
+  const disclaimerEl=document.getElementById('priceSuggestDisclaimer');
+  let lastKey='';
+  async function fetchPrice(){
+    const model=modelSel.value,storage=storageSel.value,condition=conditionSel.value;
+    if(!model||!storage||!condition){wrap.style.display='none';return;}
+    const key=model+'|'+storage+'|'+condition;
+    if(key===lastKey)return;
+    lastKey=key;
+    wrap.style.display='block';
+    loading.style.display='block';
+    messageEl.textContent='';
+    disclaimerEl.textContent='';
+    try{
+      const url='https://dealfinder-ai.app.n8n.cloud/webhook/price-suggest'
+        +'?model='+encodeURIComponent(model.toLowerCase())
+        +'&storage='+encodeURIComponent(storage)
+        +'&condition='+encodeURIComponent(condition);
+      const r=await fetch(url);
+      const data=await r.json();
+      loading.style.display='none';
+      messageEl.textContent=data.message||'';
+      disclaimerEl.textContent=data.disclaimer||'';
+    }catch{
+      loading.style.display='none';
+      wrap.style.display='none';
+      lastKey='';
+    }
+  }
+  [modelSel,storageSel,conditionSel].forEach(el=>el.addEventListener('change',fetchPrice));
+})();
 
 (function initCookieBanner(){
   if(!localStorage.getItem('cookie_consent')){
