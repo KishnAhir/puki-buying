@@ -10,6 +10,7 @@
 <meta property="og:url" content="https://pukidevices.co.uk">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://pukidevices.co.uk/logo.png">
+<meta name="keywords" content="sell broken iphone uk, cash for iphone, sell cracked iphone, iphone trade in uk, sell old iphone for cash, recycle iphone uk, sell iphone 14 for cash, sell iphone 13 uk, cash for smashed iphone, sell faulty iphone">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -817,7 +818,8 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
           </div>
           <div class="fg">
             <label>Phone Number *</label>
-            <input type="tel" name="phone" placeholder="07700 000000" required>
+            <input type="tel" name="phone" id="phoneInput" placeholder="07700 000000" required onblur="checkBlacklist(this.value)">
+            <div id="blacklistMsg" style="display:none;margin-top:8px;padding:12px 14px;border-radius:8px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;background:#FEF2F2;border:1.5px solid #FCA5A5;color:#DC2626"></div>
           </div>
           <div class="fg full">
             <label>Email Address *</label>
@@ -843,11 +845,11 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
               <div class="pm-options">
                 <label class="pm-option-row">
                   <input type="radio" name="paymentMethod" value="Bank Transfer" onchange="showPayFields(this.value)">
-                  <span>🏦 Bank Transfer (UK)</span>
+                  <span>Bank Transfer ✅ (UK Faster Payments)</span>
                 </label>
                 <label class="pm-option-row">
                   <input type="radio" name="paymentMethod" value="PayPal" onchange="showPayFields(this.value)">
-                  <span>💳 PayPal</span>
+                  <span>PayPal ✅ (instant, within 2 hours)</span>
                 </label>
                 <label class="pm-option-row">
                   <input type="radio" name="paymentMethod" value="Other" onchange="showPayFields(this.value)">
@@ -903,7 +905,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
 
           <div class="fg full">
             <label>iPhone Model *</label>
-            <select name="model" required>
+            <select name="model" required onchange="updateLivePrice()">
               <option value="">Select your model...</option>
               <optgroup label="iPhone 15 Series">
                 <option>iPhone 15 Pro Max</option>
@@ -954,15 +956,39 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
               <option>1TB</option>
             </select>
           </div>
-          <div class="fg">
-            <label>Condition *</label>
-            <select name="condition" required>
-              <option value="">Select...</option>
-              <option value="Excellent">A — Excellent (like new)</option>
-              <option value="Good">B — Good (minor marks)</option>
-              <option value="Fair">C — Fair (visible wear)</option>
-              <option value="Poor">D — Poor (cracked/scraped)</option>
+          <div class="fg full">
+            <label>Phone Condition — Please be honest *</label>
+            <select name="condition" id="conditionSelect" required onchange="checkConditionGrade(this.value)">
+              <option value="" disabled selected>Select condition...</option>
+              <option value="A+">Grade A+ — Pristine (Flawless, no scratches, 90%+ battery)</option>
+              <option value="A">Grade A — Excellent (Micro scratches on casing only, 85%+ battery)</option>
+              <option value="B">Grade B — Good (Light scratches/scuffs on body, 80%+ battery)</option>
+              <option value="C">Grade C — Fair (Heavy scratches, dents, no cracks, 70%+ battery)</option>
+              <option value="Faulty">Faulty/Cracked — Has cracks or screen damage</option>
+              <option value="iCloud Locked">iCloud Locked — Cannot access phone</option>
             </select>
+            <div id="conditionMsg" style="display:none;margin-top:8px;padding:12px 14px;border-radius:8px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;line-height:1.6"></div>
+          </div>
+
+          <div class="fg full" id="partsQuestion">
+            <label>Has any part been replaced?</label>
+            <select name="parts_replaced" id="partsSelect" onchange="checkNonGenuine(this.value)">
+              <option value="">No — All original Apple parts ✅</option>
+              <option value="screen">Screen replaced (non-genuine) ⚠️</option>
+              <option value="battery">Battery replaced (non-genuine) ⚠️</option>
+              <option value="camera">Camera replaced ⚠️</option>
+              <option value="multiple">Multiple parts replaced ⚠️</option>
+              <option value="unsure">I'm not sure</option>
+            </select>
+            <div id="partsMsg" style="display:none;margin-top:8px;padding:12px 14px;border-radius:8px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;line-height:1.6;background:#FFF7ED;border:1.5px solid #FED7AA;color:#C2410C">⚠️ Non-genuine parts reduce offer value by 20-30%. Your offer will be adjusted accordingly.</div>
+          </div>
+
+          <!-- LIVE PRICE BOX -->
+          <div class="fg full" id="livePriceBox" style="display:none">
+            <div style="background:#F0FDF4;border:2px solid #22C55E;border-left:4px solid #16A34A;border-radius:12px;padding:16px 18px;font-family:'Poppins',sans-serif">
+              <div style="font-size:20px;font-weight:800;color:#15803D">💰 Estimated Offer: £<span id="livePriceValue">—</span></div>
+              <div style="font-size:12px;color:#6B7280;margin-top:5px;font-weight:500">Final offer confirmed after inspection · Storage size may affect price</div>
+            </div>
           </div>
 
           <!-- PRICE SUGGEST BOX -->
@@ -987,6 +1013,22 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
             </select>
           </div>
 
+          <div class="fg">
+            <label>Network / Carrier</label>
+            <select name="network" id="networkSelect" onchange="checkNetworkLock(this.value)">
+              <option value="Unlocked">Unlocked (works with all networks) ✅</option>
+              <option value="EE">EE (Network Locked)</option>
+              <option value="O2">O2 (Network Locked)</option>
+              <option value="Vodafone">Vodafone (Network Locked)</option>
+              <option value="Three">Three (Network Locked)</option>
+              <option value="BT">BT Mobile (Network Locked)</option>
+              <option value="Sky">Sky Mobile (Network Locked)</option>
+              <option value="Other">Other Network (Locked)</option>
+              <option value="Unknown">I don't know</option>
+            </select>
+            <div id="networkMsg" style="display:none;margin-top:8px;padding:12px 14px;border-radius:8px;font-size:13px;font-family:'Poppins',sans-serif;line-height:1.6;background:#EFF6FF;border:1.5px solid #BFDBFE;color:#1D4ED8">ℹ️ Network locked phones receive 10% less than factory unlocked. You can often unlock free via your network's website.</div>
+          </div>
+
           <div class="form-divider" style="grid-column:1/-1"></div>
           <div class="form-divider-label">🔒 Verification (Protects You)</div>
 
@@ -1000,26 +1042,42 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
 
           <!-- PHOTO UPLOAD -->
           <div class="fg full">
-            <label>📸 Phone Photos (Optional)</label>
-            <p class="imei-hint" style="margin-bottom:8px">Upload 1–2 photos of your phone to help us process faster. Not required — you can skip this.</p>
+            <label>📸 Upload Photos of Your Phone (Required) *</label>
+            <p class="imei-hint" style="margin-bottom:8px">Please upload front, back and screen photos — this helps us process your request faster.</p>
             <div class="photo-upload-area" id="photoUploadArea" onclick="document.getElementById('photoInput').click()">
               <input type="file" id="photoInput" accept=".jpg,.jpeg,.png,.heic" multiple style="display:none" onchange="handlePhotoSelect(event)">
               <div id="photoPrompt">
                 <div style="font-size:28px;margin-bottom:6px">📷</div>
-                <div style="font-size:13px;color:var(--muted)">Click to upload photos</div>
-                <div style="font-size:11px;color:var(--muted);margin-top:4px">JPG, PNG, HEIC · Max 5MB each · Up to 2 photos</div>
+                <div style="font-size:13px;color:var(--muted)">Click to upload front, back &amp; screen photos</div>
+                <div style="font-size:11px;color:var(--muted);margin-top:4px">JPG, PNG, HEIC · Max 5MB each · Up to 3 photos</div>
               </div>
               <div id="photoPreviews" style="display:none;flex-wrap:wrap;gap:10px;justify-content:center"></div>
             </div>
+            <div id="photoError" style="display:none;color:#DC2626;font-size:12px;margin-top:6px">⚠️ Please upload at least one photo of your phone</div>
+          </div>
+
+          <div class="fg full">
+            <label>Battery Health % *</label>
+            <select name="batteryHealth" id="batteryHealthSelect" required onchange="checkBattery(this.value)">
+              <option value="" disabled selected>Select battery health...</option>
+              <option value="85plus">85% or above ✅</option>
+              <option value="80to84">80% - 84% ✅</option>
+              <option value="70to79">70% - 79% ⚠️</option>
+              <option value="below70">Below 70% ❌</option>
+              <option value="unknown">I don't know</option>
+            </select>
+            <div id="batteryMsg" style="display:none;margin-top:8px;padding:12px 14px;border-radius:8px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600"></div>
           </div>
 
           <div class="fg full">
             <label>Confirm: iCloud & Find My iPhone is TURNED OFF *</label>
-            <select name="icloudOff" required>
+            <select name="icloudOff" id="icloudSelect" required onchange="checkIcloud(this.value)">
               <option value="">Please confirm...</option>
               <option value="yes">✅ Yes — iCloud signed out & Find My is OFF</option>
               <option value="unsure">⚠️ Not sure — I need help with this</option>
+              <option value="no">❌ No — it is still locked</option>
             </select>
+            <div id="icloudMsg" style="display:none;margin-top:8px;padding:12px 14px;border-radius:8px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;line-height:1.6"></div>
           </div>
 
           <div class="fg full">
@@ -1035,16 +1093,17 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
 
           <div class="legal-checks">
             <label class="legal-check">
-              <input type="checkbox" id="legalOwn">
-              <span>I confirm this phone belongs to me and is not stolen or finance locked. *</span>
-            </label>
-            <label class="legal-check">
-              <input type="checkbox" id="legalAge">
-              <span>I am 18 years or older. *</span>
-            </label>
-            <label class="legal-check">
-              <input type="checkbox" id="legalPrivacy">
-              <span>I agree to PUKI Devices storing my details to process this sale. <a href="/privacy" style="color:var(--red)">View our Privacy Policy</a>. *</span>
+              <input type="checkbox" id="legalAll">
+              <span style="line-height:1.8">
+                I confirm that:<br>
+                ✅ I am the legal owner of this phone<br>
+                ✅ The phone is NOT stolen or insurance claimed<br>
+                ✅ iCloud / Find My iPhone is disabled (or I accept parts pricing)<br>
+                ✅ The condition I described is accurate<br>
+                ✅ I understand a revised lower offer will be sent if the phone arrives in worse condition<br>
+                ✅ I understand stolen phones will be held for 28 days and reported to police<br>
+                ✅ I agree to PUKI Devices <a href="/privacy" style="color:var(--red)">Terms &amp; Conditions</a> *
+              </span>
             </label>
           </div>
           <div class="legal-check-error" id="legalError">⚠️ Please confirm all boxes above to continue</div>
@@ -1062,6 +1121,11 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
         <div class="ftb">⚡ 1 Hour Response</div>
         <div class="ftb">🚚 Free Label</div>
       </div>
+    </div>
+
+    <!-- DUPLICATE -->
+    <div id="duplicateMsg" style="display:none;margin:12px 0;padding:14px 16px;border-radius:10px;background:#FFFBEB;border:1.5px solid #FCD34D;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;color:#92400E;line-height:1.7;text-align:center">
+      ⚠️ We already have an active offer for this phone.<br>Please check your email for your existing offer, or contact us at<br><a href="mailto:info@pukidevices.co.uk" style="color:#92400E">info@pukidevices.co.uk</a>
     </div>
 
     <!-- ERROR -->
@@ -1118,19 +1182,13 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
 
       <!-- COMPARISON TABLE -->
       <div class="compare-wrap" id="compareWrap" style="display:none">
-        <h4>📊 How we compare:</h4>
-        <table class="compare-table">
-          <thead><tr><th>Buyer</th><th>Their Price</th><th>Wait Time</th></tr></thead>
-          <tbody>
-            <tr><td><img id="logoMM" class="comp-logo" src="https://musicmagpie.co.uk/favicon.ico" onerror="this.style.display='none';document.getElementById('initMM').style.display='inline-flex'"><span id="initMM" class="comp-initial" style="background:#7C3AED">M</span>Music Magpie</td><td id="cmpMM">—</td><td>5–7 days (post)</td></tr>
-            <tr><td><img id="logoEF" class="comp-logo" src="https://www.envirofone.com/favicon.ico" onerror="this.style.display='none';document.getElementById('initEF').style.display='inline-flex'"><span id="initEF" class="comp-initial" style="background:#16A34A">E</span>Envirofone</td><td id="cmpEF">—</td><td>3–5 days (post)</td></tr>
-            <tr><td><img id="logoMZ" class="comp-logo" src="https://www.mazumamobile.com/favicon.ico" onerror="this.style.display='none';document.getElementById('initMZ').style.display='inline-flex'"><span id="initMZ" class="comp-initial" style="background:#2563EB">Z</span>Mazuma</td><td id="cmpMZ">—</td><td>3–5 days (post)</td></tr>
-            <tr><td><img id="logoCX" class="comp-logo" src="https://uk.webuy.com/favicon.ico" onerror="this.style.display='none';document.getElementById('initCX').style.display='inline-flex'"><span id="initCX" class="comp-initial" style="background:#DC2626">C</span>CeX</td><td id="cmpCX">—</td><td>Same day (store only)</td></tr>
-            <tr class="puki-row"><td><img id="logoPK" class="comp-logo" src="logo.png" onerror="this.style.display='none';document.getElementById('initPK').style.display='inline-flex'" style="border-radius:4px"><span id="initPK" class="comp-initial" style="background:#E94560">P</span>PUKI Devices</td><td id="cmpPK">—<div style="font-size:10px;font-weight:400;color:#6B7280;margin-top:3px">🔄 Prices updated daily based on live market rates</div></td><td>Same day (post from home)🏠</td></tr>
-          </tbody>
-        </table>
+        <h4>💰 Why sell to PUKI Devices?</h4>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff0f3;border-radius:10px;border:1.5px solid #ffd6de;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:#1a1a2e">✅ We pay more than other buyers</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff0f3;border-radius:10px;border:1.5px solid #ffd6de;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:#1a1a2e">✅ Same day payment — post from home 🏠</div>
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff0f3;border-radius:10px;border:1.5px solid #ffd6de;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:#1a1a2e">✅ Free Royal Mail tracked label</div>
+        </div>
         <p style="font-size:12px;color:#6B7280;text-align:center;margin-top:10px">💡 PUKI Devices pays more and you never need to leave home!</p>
-        <p style="font-size:12px;color:#9CA3AF;font-style:italic;text-align:center;margin-top:8px;line-height:1.6;font-weight:400">*Competitor prices shown are estimates based on recent market data and updated daily. Prices may vary. We recommend verifying on their website before making a decision. PUKI Devices is not affiliated with any competitor listed.</p>
       </div>
 
       <!-- GRADING CONTRACT -->
@@ -1295,6 +1353,9 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
     <span>© 2026 PUKI Devices. All rights reserved. PUKI Devices is a trading name of Sindoor Ltd (Co. No: 16442521)</span>
     <div class="verified-badge">🔒 Secure · Trusted · Transparent</div>
   </div>
+  <div style="max-width:860px;margin:16px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);text-align:center;font-size:11px;color:rgba(255,255,255,.3);line-height:1.7">
+    We are an independent electronic device trade-in platform. We are not affiliated with, authorised by, or endorsed by Apple Inc. iPhone is a trademark of Apple Inc., registered in the US and other countries.
+  </div>
 </footer>
 
 <!-- AGE VERIFICATION POPUP -->
@@ -1320,6 +1381,7 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
 <script>
 // Stored for accept button
 let submittedData=null,pukiOfferPrice=0;
+let battery_warning_flag=false,icloud_warning_flag=false,is_duplicate_flag=false,is_blacklisted_flag=false,icloud_locked_flag=false,faulty_flag=false,non_genuine_flag=false,network_locked_flag=false;
 const _formLoadedAt = new Date().toISOString();
 
 // Price calculator
@@ -1359,12 +1421,22 @@ const WEBHOOK='https://dealfinder-ai.app.n8n.cloud/webhook/sell-request';
 document.getElementById('sellForm').addEventListener('submit',async function(e){
   e.preventDefault();
   const legalErr=document.getElementById('legalError');
-  if(!document.getElementById('legalOwn').checked||!document.getElementById('legalAge').checked||!document.getElementById('legalPrivacy').checked){
+  if(!document.getElementById('legalAll').checked){
     legalErr.style.display='block';
     legalErr.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
   legalErr.style.display='none';
+  // IMEI Luhn validation (if filled in)
+  const _imeiRaw=document.getElementById('imeiInput').value.replace(/\D/g,'');
+  if(_imeiRaw&&_imeiRaw.length===15&&!luhnCheck(_imeiRaw)){
+    const _is=document.getElementById('imeiStatus');
+    _is.style.display='block';
+    _is.style.color='#DC2626';
+    _is.textContent='❌ Invalid IMEI. Please dial *#06# on your phone and enter the 15-digit number shown.';
+    document.getElementById('imeiInput').scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
   // Honeypot check — bots fill hidden fields
   if(document.getElementById('hp_website').value){
     document.getElementById('formContainer').style.display='none';
@@ -1408,10 +1480,21 @@ document.getElementById('sellForm').addEventListener('submit',async function(e){
     document.getElementById('paymentSectionBox').scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
+  // Require at least one photo
+  if(selectedPhotos.length===0){
+    const uploadArea=document.getElementById('photoUploadArea');
+    const photoErr=document.getElementById('photoError');
+    if(uploadArea)uploadArea.style.border='2px dashed #DC2626';
+    if(photoErr)photoErr.style.display='block';
+    uploadArea.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
   const btn=document.getElementById('submitBtn');
   const txt=document.getElementById('btnText');
   const spin=document.getElementById('spinner');
   btn.disabled=true;txt.textContent='Sending...';spin.style.display='block';
+  let submission_ip='unknown';
+  try{const _ipr=await fetch('https://api.ipify.org?format=json');const _ipd=await _ipr.json();submission_ip=_ipd.ip||'unknown';}catch{/*silent*/}
   const data={
     name:fd.get('name'),phone:fd.get('phone'),email:fd.get('email'),
     address:fd.get('address'),city:fd.get('city'),postcode:fd.get('postcode'),
@@ -1425,10 +1508,48 @@ document.getElementById('sellForm').addEventListener('submit',async function(e){
     color:fd.get('color'),imei:fd.get('imei')||'Not provided',
     icloudOff:fd.get('icloudOff'),
     source:fd.get('source'),submittedAt:new Date().toISOString(),
-    photo1:photoUrls[0]||'',photo2:photoUrls[1]||'',
+    photo1:photoBase64[0]||'',photo2:photoBase64[1]||'',photo3:photoBase64[2]||'',
     pageVersion:'v2-professional',
-    formLoadedAt:_formLoadedAt
+    formLoadedAt:_formLoadedAt,
+    battery_warning:battery_warning_flag,
+    icloud_warning:icloud_warning_flag,
+    is_duplicate:false,
+    is_blacklisted:is_blacklisted_flag,
+    fraud_suspected:(is_blacklisted_flag||is_duplicate_flag),
+    grade:fd.get('condition')||'',
+    icloud_locked:icloud_locked_flag,
+    faulty:faulty_flag,
+    non_genuine_parts:non_genuine_flag,
+    parts_replaced:fd.get('parts_replaced')||'',
+    network:fd.get('network')||'Unlocked',
+    network_locked:network_locked_flag,
+    tcs_agreed:true,
+    submission_ip:submission_ip
   };
+  // Duplicate check — runs before main submission
+  try{
+    const dupCheck=await fetch(N8N_BASE+'/webhook/check-duplicate',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({imei:data.imei,phone_number:data.phone})
+    });
+    const dupData=await dupCheck.json();
+    if(dupData.duplicate===true){
+      is_duplicate_flag=true;
+      data.is_duplicate=true;
+      const dupEl=document.getElementById('duplicateMsg');
+      dupEl.style.display='block';
+      dupEl.style.background='#FFF7ED';
+      dupEl.style.border='1.5px solid #FED7AA';
+      dupEl.style.color='#C2410C';
+      dupEl.textContent='⚠️ We may already have a submission from this device. Submitting anyway.';
+    } else {
+      is_duplicate_flag=false;
+      document.getElementById('duplicateMsg').style.display='none';
+    }
+  }catch{
+    // silent fail — continue if duplicate check is unreachable
+  }
   try{
     const r=await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
     if(!r.ok) throw new Error('Server error');
@@ -1436,7 +1557,8 @@ document.getElementById('sellForm').addEventListener('submit',async function(e){
     document.getElementById('formContainer').style.display='none';
     document.getElementById('successBox').style.display='block';
     if(typeof fbq==='function')fbq('track','Lead');
-    if(typeof gtag==='function')gtag('event','generate_lead');
+    if(typeof gtag==='function')gtag('event','form_submit',{'event_category':'conversion','event_label':'seller_submission','value':res.offerPrice||0});
+    if(typeof gtag==='function'&&window._gadsConversionId)gtag('event','conversion',{'send_to':window._gadsConversionId+'/CONVERSION-LABEL','value':res.offerPrice||0,'currency':'GBP','transaction_id':Date.now().toString()});
     document.getElementById('offerNum').textContent=res.offerPrice||'Check Email';
     document.getElementById('refDisplay').style.display='none';
     document.getElementById('trackingBox').style.display='none';
@@ -1465,6 +1587,19 @@ document.getElementById('sellForm').addEventListener('submit',async function(e){
       document.getElementById('acceptSection').style.display='block';
       document.getElementById('formalitiesSection').style.display='block';
       startOfferTimer();
+      // Lock price in Airtable for 24 hours
+      const _now=new Date();
+      const _exp=new Date(_now.getTime()+24*60*60*1000);
+      fetch(N8N_BASE+'/webhook/lock-offer-price',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          record_id:res.record_id||res.reference||'',
+          offer_price:pukiOfferPrice,
+          offer_generated_at:_now.toISOString(),
+          offer_expires_at:_exp.toISOString()
+        })
+      }).catch(()=>{});
     }
   }catch{
     btn.disabled=false;
@@ -1630,25 +1765,14 @@ function editMyDetails(){
   document.getElementById('get-offer').scrollIntoView({behavior:'smooth'});
 }
 
-// Photo upload
-// ⚠️ ACTION NEEDED: Replace YOUR_IMGBB_API_KEY with your free key from imgbb.com/api
-const IMGBB_KEY='5b5e7471ec866495d106f61a3bd81d40';
-let selectedPhotos=[],photoUrls=[];
+// Photo upload — base64
+let selectedPhotos=[],photoBase64=[];
 
-async function uploadToImgBB(file){
-  return new Promise(resolve=>{
+function fileToBase64(file){
+  return new Promise((resolve,reject)=>{
     const reader=new FileReader();
-    reader.onload=async function(){
-      try{
-        const b64=reader.result.split(',')[1];
-        const fd=new FormData();
-        fd.append('image',b64);
-        const resp=await fetch('https://api.imgbb.com/1/upload?key='+IMGBB_KEY,{method:'POST',body:fd});
-        const data=await resp.json();
-        resolve(data.success?data.data.url:null);
-      }catch{resolve(null);}
-    };
-    reader.onerror=()=>resolve(null);
+    reader.onload=()=>resolve(reader.result.split(',')[1]);
+    reader.onerror=reject;
     reader.readAsDataURL(file);
   });
 }
@@ -1656,16 +1780,19 @@ async function uploadToImgBB(file){
 async function handlePhotoSelect(event){
   const files=Array.from(event.target.files);
   for(const file of files){
-    if(selectedPhotos.length>=2)break;
+    if(selectedPhotos.length>=3)break;
     if(file.size>5*1024*1024){alert('Photo "'+file.name+'" is over 5MB. Please choose a smaller file.');continue;}
     const idx=selectedPhotos.length;
     selectedPhotos.push(file);
-    photoUrls.push(null);
+    photoBase64.push(null);
     renderPhotoPreviews();
-    const url=await uploadToImgBB(file);
-    photoUrls[idx]=url;
+    try{
+      photoBase64[idx]=await fileToBase64(file);
+    }catch(e){photoBase64[idx]=null;}
   }
   event.target.value='';
+  document.getElementById('photoError').style.display='none';
+  document.getElementById('photoUploadArea').style.border='';
 }
 function renderPhotoPreviews(){
   const container=document.getElementById('photoPreviews');
@@ -1677,9 +1804,9 @@ function renderPhotoPreviews(){
   container.innerHTML=selectedPhotos.map((f,i)=>{
     const url=URL.createObjectURL(f);
     return `<div class="photo-thumb-wrap"><img src="${url}" class="photo-thumb" alt="Photo ${i+1}"><button type="button" class="photo-remove" onclick="removePhoto(${i})">×</button></div>`;
-  }).join('')+(selectedPhotos.length<2?`<div style="width:80px;height:80px;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);font-size:24px;font-weight:300" onclick="document.getElementById('photoInput').click()">+</div>`:'');
+  }).join('')+(selectedPhotos.length<3?`<div style="width:80px;height:80px;border:2px dashed var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);font-size:24px;font-weight:300" onclick="document.getElementById('photoInput').click()">+</div>`:'');
 }
-function removePhoto(index){selectedPhotos.splice(index,1);photoUrls.splice(index,1);renderPhotoPreviews();}
+function removePhoto(index){selectedPhotos.splice(index,1);photoBase64.splice(index,1);renderPhotoPreviews();}
 
 // Payment section toggle
 function showPayFields(method){
@@ -1718,11 +1845,29 @@ function ageVerify(isAdult){
 const N8N_BASE='https://dealfinder-ai.app.n8n.cloud';
 let imeiCheckInProgress=false;
 
+function luhnCheck(imei){
+  const d=[...imei].map(Number);
+  let sum=0;
+  for(let i=0;i<d.length;i++){
+    let n=d[i];
+    if((d.length-1-i)%2===1){n*=2;if(n>9)n-=9;}
+    sum+=n;
+  }
+  return sum%10===0;
+}
+
 async function checkImei(val){
   const clean=val.replace(/\D/g,'');
   const statusEl=document.getElementById('imeiStatus');
   const submitBtn=document.getElementById('submitBtn');
-  if(!clean||clean.length!==15){statusEl.style.display='none';return;}
+  if(!clean||clean.length!==15){statusEl.style.display='none';if(submitBtn&&!imeiCheckInProgress)submitBtn.disabled=false;return;}
+  if(!luhnCheck(clean)){
+    statusEl.style.display='block';
+    statusEl.style.color='#DC2626';
+    statusEl.textContent='❌ Invalid IMEI. Please dial *#06# on your phone and enter the 15-digit number shown.';
+    if(submitBtn)submitBtn.disabled=true;
+    return;
+  }
   if(imeiCheckInProgress)return;
   imeiCheckInProgress=true;
   statusEl.style.display='block';
@@ -1748,6 +1893,171 @@ async function checkImei(val){
     statusEl.style.display='none';
   }
   imeiCheckInProgress=false;
+}
+
+// ── SHARED BLOCK FLAGS ──
+let submitBlockedByBlacklist=false;
+let submitBlockedByIcloud=false;
+let submitBlockedByBattery=false;
+function updateSubmitBtn(){
+  const btn=document.getElementById('submitBtn');
+  if(submitBlockedByBlacklist||submitBlockedByIcloud||submitBlockedByBattery){
+    btn.disabled=true;
+  } else {
+    btn.disabled=false;
+  }
+}
+
+// ── BATTERY HEALTH CHECK ──
+function checkBattery(val){
+  const msg=document.getElementById('batteryMsg');
+  if(val==='below70'){
+    battery_warning_flag=true;
+    msg.style.display='block';
+    msg.style.background='#FFF7ED';
+    msg.style.border='1.5px solid #FED7AA';
+    msg.style.color='#C2410C';
+    msg.style.lineHeight='1.6';
+    msg.innerHTML='⚠️ Low battery detected. Your offer may be lower than standard. You can still submit.';
+  } else {
+    battery_warning_flag=false;
+    msg.style.display='none';
+  }
+}
+
+// ── ICLOUD LOCK CHECK ──
+function checkIcloud(val){
+  const msg=document.getElementById('icloudMsg');
+  if(val==='no'){
+    icloud_warning_flag=true;
+    msg.style.display='block';
+    msg.style.background='#FFF7ED';
+    msg.style.border='1.5px solid #FED7AA';
+    msg.style.color='#C2410C';
+    msg.innerHTML='⚠️ Please ensure iCloud is signed out before posting. We will verify on arrival.';
+  } else if(val==='unsure'){
+    icloud_warning_flag=false;
+    msg.style.display='block';
+    msg.style.background='#FFFBEB';
+    msg.style.border='1.5px solid #FCD34D';
+    msg.style.color='#92400E';
+    msg.innerHTML='⚠️ Please check before submitting.<br>Go to: Settings → [Your Name]<br>If you see your Apple ID, iCloud is still active.';
+  } else {
+    icloud_warning_flag=false;
+    msg.style.display='none';
+  }
+}
+
+// ── CONDITION GRADE CHECK ──
+function checkConditionGrade(val){
+  if(val&&typeof gtag==='function'){
+    gtag('event','select_grade',{'event_category':'form','event_label':val});
+    if(window._gadsConversionId)gtag('event','add_to_cart',{'send_to':window._gadsConversionId,'value':parseInt(document.getElementById('livePriceValue')?.textContent)||0,'currency':'GBP'});
+  }
+  const msg=document.getElementById('conditionMsg');
+  const partsQ=document.getElementById('partsQuestion');
+  if(val==='iCloud Locked'){
+    icloud_locked_flag=true;faulty_flag=false;
+    msg.style.display='block';
+    msg.style.background='#FFF7ED';
+    msg.style.border='1.5px solid #FED7AA';
+    msg.style.color='#C2410C';
+    msg.innerHTML='⚠️ Your phone will be valued as parts only.<br>To get our FULL price:<br>1. Sign into icloud.com<br>2. Select your device → Click \'Remove from Account\'<br>3. Resubmit with iCloud removed ✅<br>OR continue to get a parts-only offer.';
+    if(partsQ)partsQ.style.display='none';
+  } else if(val==='Faulty'){
+    faulty_flag=true;icloud_locked_flag=false;
+    msg.style.display='block';
+    msg.style.background='#FFF7ED';
+    msg.style.border='1.5px solid #FED7AA';
+    msg.style.color='#C2410C';
+    msg.innerHTML='⚠️ Cracked phones are valued significantly lower. We may still buy it — submit for a custom offer.';
+    if(partsQ)partsQ.style.display='block';
+  } else {
+    icloud_locked_flag=false;faulty_flag=false;
+    msg.style.display='none';
+    if(partsQ)partsQ.style.display='block';
+  }
+  updateLivePrice();
+}
+
+// ── LIVE PRICE CALCULATOR ──
+const _LIVE_PRICES={
+  'iPhone 12':{'A+':120,'A':102,'B':85,'C':65,'Faulty':45,'iCloud Locked':18},
+  'iPhone 13':{'A+':145,'A':123,'B':102,'C':78,'Faulty':55,'iCloud Locked':22},
+  'iPhone 14':{'A+':175,'A':149,'B':124,'C':95,'Faulty':65,'iCloud Locked':26},
+  'iPhone 15':{'A+':220,'A':187,'B':156,'C':120,'Faulty':80,'iCloud Locked':33}
+};
+function updateLivePrice(){
+  const modelEl=document.querySelector('select[name="model"]');
+  const gradeEl=document.getElementById('conditionSelect');
+  const box=document.getElementById('livePriceBox');
+  const val=document.getElementById('livePriceValue');
+  if(!modelEl||!gradeEl||!box||!val)return;
+  const mv=modelEl.value||'';
+  const gr=gradeEl.value||'';
+  if(_LIVE_PRICES[mv]&&gr&&_LIVE_PRICES[mv][gr]!==undefined){
+    val.textContent=_LIVE_PRICES[mv][gr];
+    box.style.display='block';
+  }else{
+    box.style.display='none';
+  }
+  if(mv&&typeof gtag==='function'){
+    gtag('event','select_model',{'event_category':'form','event_label':mv});
+    if(window._gadsConversionId)gtag('event','view_item',{'send_to':window._gadsConversionId,'items':[{'item_name':mv||'iPhone','item_category':'Buyback'}]});
+  }
+}
+
+// ── NON-GENUINE PARTS CHECK ──
+function checkNonGenuine(val){
+  const msg=document.getElementById('partsMsg');
+  if(val&&val!=='unsure'){
+    non_genuine_flag=true;
+    msg.style.display='block';
+  } else {
+    non_genuine_flag=false;
+    msg.style.display='none';
+  }
+}
+
+// ── NETWORK LOCK CHECK ──
+function checkNetworkLock(val){
+  const msg=document.getElementById('networkMsg');
+  if(val&&val!=='Unlocked'&&val!=='Unknown'){
+    network_locked_flag=true;
+    msg.style.display='block';
+  } else {
+    network_locked_flag=false;
+    msg.style.display='none';
+  }
+}
+
+// ── SELLER BLACKLIST CHECK ──
+async function checkBlacklist(phone){
+  if(!phone||phone.replace(/\D/g,'').length<7)return;
+  const email=(document.querySelector('[name=email]')||{}).value||'';
+  try{
+    const r=await fetch(N8N_BASE+'/webhook/check-blacklist',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({phone_number:phone,email:email})
+    });
+    const data=await r.json();
+    const msg=document.getElementById('blacklistMsg');
+    if(data.blacklisted===true){
+      is_blacklisted_flag=true;
+      msg.style.display='block';
+      msg.style.background='#FFF7ED';
+      msg.style.border='1.5px solid #FED7AA';
+      msg.style.color='#C2410C';
+      msg.innerHTML='⚠️ Submission flagged for review.';
+    } else {
+      is_blacklisted_flag=false;
+      msg.style.display='none';
+    }
+    updateSubmitBtn();
+  }catch{
+    // silent fail — don't block submission on network error
+  }
 }
 
 // ── LIVE STOCK COUNTER ──
@@ -1784,6 +2094,15 @@ function loadTrackingScripts(){
   window.gtag=gtag;
   gtag('js',new Date());
   gtag('config','G-SRLL9GMX0C');
+  // Google Ads Remarketing Pixel — replace AW-CONVERSION-ID from Google Ads → Tools → Conversions → Tag setup
+  window._gadsConversionId='AW-CONVERSION-ID';
+  var gads=document.createElement('script');
+  gads.async=true;
+  gads.src='https://www.googletagmanager.com/gtag/js?id='+window._gadsConversionId;
+  document.head.appendChild(gads);
+  gtag('config',window._gadsConversionId);
+  gtag('event','page_view',{'send_to':window._gadsConversionId});
+  // End Google Ads Remarketing
   // Facebook Pixel — 865331743025391
   !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
   fbq('init','865331743025391');
