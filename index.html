@@ -990,6 +990,12 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
               <div style="font-size:12px;color:#6B7280;margin-top:5px;font-weight:500">Final offer confirmed after inspection · Storage size may affect price</div>
             </div>
           </div>
+          <div id="priceTrustBadges" style="display:none;justify-content:space-around;flex-wrap:wrap;gap:6px;margin-top:10px;font-size:12px;color:#27AE60;font-weight:600;">
+            <span>✅ Free Label</span>
+            <span>✅ Same Day Pay</span>
+            <span>✅ Free Return</span>
+            <span>✅ No Hidden Fees</span>
+          </div>
 
           <!-- PRICE SUGGEST BOX -->
           <div class="fg full" id="priceSuggestWrap" style="display:none">
@@ -1981,13 +1987,63 @@ function checkConditionGrade(val){
 }
 
 // ── LIVE PRICE CALCULATOR ──
+async function loadLivePrices() {
+  try {
+    const res = await fetch(
+      'https://dealfinder-ai.app.n8n.cloud/webhook/get-live-prices',
+      { method: 'GET' }
+    );
+    const data = await res.json();
+    if (data && data.iphone_13 && data.iphone_13.good > 0) {
+      window._DYNAMIC_PRICES = {
+        'iPhone 12': {
+          'A+': data.iphone_12.excellent,
+          'A':  data.iphone_12.good,
+          'B':  data.iphone_12.fair,
+          'C':  Math.round(data.iphone_12.fair * 0.75),
+          'Faulty': data.iphone_12.faulty,
+          'iCloud Locked': Math.round(data.iphone_12.excellent * 0.15)
+        },
+        'iPhone 13': {
+          'A+': data.iphone_13.excellent,
+          'A':  data.iphone_13.good,
+          'B':  data.iphone_13.fair,
+          'C':  Math.round(data.iphone_13.fair * 0.75),
+          'Faulty': data.iphone_13.faulty,
+          'iCloud Locked': Math.round(data.iphone_13.excellent * 0.15)
+        },
+        'iPhone 14': {
+          'A+': data.iphone_14.excellent,
+          'A':  data.iphone_14.good,
+          'B':  data.iphone_14.fair,
+          'C':  Math.round(data.iphone_14.fair * 0.75),
+          'Faulty': data.iphone_14.faulty,
+          'iCloud Locked': Math.round(data.iphone_14.excellent * 0.15)
+        },
+        'iPhone 15': {
+          'A+': data.iphone_15.excellent,
+          'A':  data.iphone_15.good,
+          'B':  data.iphone_15.fair,
+          'C':  Math.round(data.iphone_15.fair * 0.75),
+          'Faulty': data.iphone_15.faulty,
+          'iCloud Locked': Math.round(data.iphone_15.excellent * 0.15)
+        }
+      };
+      window._PRICES_LOADED = true;
+      window._PRICES_SOURCE = data.source;
+    }
+  } catch(e) {
+    window._PRICES_LOADED = false;
+  }
+}
 const _LIVE_PRICES={
-  'iPhone 12':{'A+':120,'A':102,'B':85,'C':65,'Faulty':45,'iCloud Locked':18},
-  'iPhone 13':{'A+':145,'A':123,'B':102,'C':78,'Faulty':55,'iCloud Locked':22},
-  'iPhone 14':{'A+':175,'A':149,'B':124,'C':95,'Faulty':65,'iCloud Locked':26},
-  'iPhone 15':{'A+':220,'A':187,'B':156,'C':120,'Faulty':80,'iCloud Locked':33}
+  'iPhone 12':{'A+':125,'A':108,'B':88,'C':68,'Faulty':45,'iCloud Locked':19},
+  'iPhone 13':{'A+':155,'A':135,'B':112,'C':85,'Faulty':55,'iCloud Locked':23},
+  'iPhone 14':{'A+':200,'A':175,'B':145,'C':110,'Faulty':65,'iCloud Locked':30},
+  'iPhone 15':{'A+':255,'A':220,'B':180,'C':140,'Faulty':80,'iCloud Locked':38}
 };
 function updateLivePrice(){
+  const prices = (window._PRICES_LOADED && window._DYNAMIC_PRICES) ? window._DYNAMIC_PRICES : _LIVE_PRICES;
   const modelEl=document.querySelector('select[name="model"]');
   const gradeEl=document.getElementById('conditionSelect');
   const box=document.getElementById('livePriceBox');
@@ -1995,11 +2051,13 @@ function updateLivePrice(){
   if(!modelEl||!gradeEl||!box||!val)return;
   const mv=modelEl.value||'';
   const gr=gradeEl.value||'';
-  if(_LIVE_PRICES[mv]&&gr&&_LIVE_PRICES[mv][gr]!==undefined){
-    val.textContent=_LIVE_PRICES[mv][gr];
+  if(prices[mv]&&gr&&prices[mv][gr]!==undefined){
+    val.textContent=prices[mv][gr];
     box.style.display='block';
+    document.getElementById('priceTrustBadges').style.display='flex';
   }else{
     box.style.display='none';
+    document.getElementById('priceTrustBadges').style.display='none';
   }
   if(mv&&typeof gtag==='function'){
     gtag('event','select_model',{'event_category':'form','event_label':mv});
@@ -2161,6 +2219,7 @@ function acceptCookies(){
     loadTrackingScripts();
   }
 })();
+loadLivePrices();
 </script>
 </body>
 </html>
