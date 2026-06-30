@@ -55,6 +55,13 @@ nav{background:var(--navy);padding:0 24px;height:64px;display:flex;align-items:c
 .nav-cta{background:var(--red);color:#fff;padding:8px 20px;border-radius:8px;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;text-decoration:none;transition:.2s}
 .nav-cta:hover{background:#c73652}
 @media(max-width:600px){.nav-links{gap:12px}.nav-link{display:none}.nav-cta{font-size:13px;padding:8px 14px}}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:var(--navy);border-bottom:1px solid rgba(255,255,255,.1);padding:16px 24px;flex-direction:column;gap:4px;z-index:199;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.mobile-menu.open{display:flex}
+.mobile-menu .nav-link{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:15px;color:rgba(255,255,255,.85)}
+.mobile-menu .nav-cta{margin-top:8px;text-align:center;padding:12px;font-size:15px;display:block}
+@media(max-width:600px){.hamburger{display:flex}}
 
 /* ── TRUST BAR ── */
 .trust-bar{background:var(--green);padding:10px 24px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
@@ -210,6 +217,8 @@ input:focus,select:focus,textarea:focus{border-color:var(--red)}
 .form-divider{grid-column:1/-1;height:1px;background:var(--border);margin:4px 0}
 .form-divider-label{grid-column:1/-1;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;font-family:'Poppins',sans-serif}
 .imei-hint{font-size:11px;color:var(--muted);margin-top:3px}
+.box-toggle-btn{flex:1;padding:11px;background:#fff;border:2px solid var(--border);border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:600;color:var(--muted);cursor:pointer;transition:.2s}
+.box-toggle-btn.active{border-color:var(--green);background:#f0fdf4;color:var(--green)}
 .submit-btn{grid-column:1/-1;padding:18px;background:var(--red);color:#fff;border:none;border-radius:12px;font-family:'Poppins',sans-serif;font-size:18px;font-weight:700;cursor:pointer;transition:.2s;display:flex;align-items:center;justify-content:center;gap:10px}
 .submit-btn:hover{background:#c73652;transform:translateY(-1px)}
 .submit-btn:disabled{background:#ccc;cursor:not-allowed;transform:none}
@@ -331,7 +340,16 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
     <a href="#faq" class="nav-link">FAQ</a>
     <a href="#get-offer" class="nav-cta">💰 Get Offer</a>
   </div>
+  <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#how-it-works" class="nav-link">How It Works</a>
+  <a href="#our-rules" class="nav-link">Our Rules</a>
+  <a href="#faq" class="nav-link">FAQ</a>
+  <a href="#get-offer" class="nav-cta">💰 Get Offer</a>
+</div>
 
 <!-- TRUST BAR -->
 <div class="trust-bar">
@@ -799,6 +817,101 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
   </div>
 </section>
 
+<!-- INSTANT ESTIMATE WIDGET -->
+<section id="instant-calc" style="padding:60px 24px;background:var(--light)">
+  <div style="max-width:520px;margin:0 auto;text-align:center">
+    <div class="section-label">Instant Offer</div>
+    <h2 class="section-title">Get Your Instant Estimate</h2>
+    <p class="section-sub">No waiting — find out what your iPhone is worth right now!</p>
+
+    <div id="instantCalcStep1" style="background:#fff;border-radius:18px;padding:28px 24px;border:1px solid var(--border);text-align:left">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div>
+          <label style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px">Model</label>
+          <select id="instantCalcModel" style="width:100%;padding:11px 12px;border:2px solid var(--border);border-radius:10px;font-size:14px;background:#fff;outline:none;color:var(--text)">
+            <option value="">Select model...</option>
+            <optgroup label="iPhone 15">
+              <option value="iPhone 15 Pro Max|140">iPhone 15 Pro Max</option>
+              <option value="iPhone 15 Pro|130">iPhone 15 Pro</option>
+              <option value="iPhone 15 Plus|130">iPhone 15 Plus</option>
+              <option value="iPhone 15|125">iPhone 15</option>
+            </optgroup>
+            <optgroup label="iPhone 14">
+              <option value="iPhone 14 Pro Max|130">iPhone 14 Pro Max</option>
+              <option value="iPhone 14 Pro|125">iPhone 14 Pro</option>
+              <option value="iPhone 14 Plus|120">iPhone 14 Plus</option>
+              <option value="iPhone 14|115">iPhone 14</option>
+            </optgroup>
+            <optgroup label="iPhone 13">
+              <option value="iPhone 13 Pro Max|115">iPhone 13 Pro Max</option>
+              <option value="iPhone 13 Pro|110">iPhone 13 Pro</option>
+              <option value="iPhone 13 Mini|95">iPhone 13 Mini</option>
+              <option value="iPhone 13|100">iPhone 13</option>
+            </optgroup>
+            <optgroup label="iPhone 12">
+              <option value="iPhone 12 Pro Max|100">iPhone 12 Pro Max</option>
+              <option value="iPhone 12 Pro|95">iPhone 12 Pro</option>
+              <option value="iPhone 12 Mini|80">iPhone 12 Mini</option>
+              <option value="iPhone 12|85">iPhone 12</option>
+            </optgroup>
+            <optgroup label="iPhone 11">
+              <option value="iPhone 11 Pro Max|80">iPhone 11 Pro Max</option>
+              <option value="iPhone 11 Pro|75">iPhone 11 Pro</option>
+              <option value="iPhone 11|65">iPhone 11</option>
+            </optgroup>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px">Storage</label>
+          <select id="instantCalcStorage" style="width:100%;padding:11px 12px;border:2px solid var(--border);border-radius:10px;font-size:14px;background:#fff;outline:none;color:var(--text)">
+            <option value="1">64GB</option>
+            <option value="1.08" selected>128GB</option>
+            <option value="1.16">256GB</option>
+            <option value="1.25">512GB</option>
+            <option value="1.35">1TB</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px">Condition</label>
+          <select id="instantCalcCondition" style="width:100%;padding:11px 12px;border:2px solid var(--border);border-radius:10px;font-size:14px;background:#fff;outline:none;color:var(--text)">
+            <option value="1.0">Excellent</option>
+            <option value="0.85" selected>Good</option>
+            <option value="0.70">Fair</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size:11px;font-weight:700;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:6px">Battery %</label>
+          <input type="number" id="instantCalcBattery" placeholder="e.g. 85" min="1" max="100" value="85"
+            style="width:100%;padding:11px 12px;border:2px solid var(--border);border-radius:10px;font-size:14px;outline:none;color:var(--text)">
+        </div>
+      </div>
+      <button onclick="calcOffer()" style="width:100%;margin-top:18px;padding:15px;background:var(--red);color:#fff;border:none;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;cursor:pointer;transition:.2s"
+        onmouseover="this.style.background='#c73652'" onmouseout="this.style.background='var(--red)'">
+        ⚡ GET INSTANT ESTIMATE →
+      </button>
+    </div>
+
+    <div id="instantCalcResult" style="display:none;background:var(--navy);border-radius:18px;padding:32px 24px;text-align:center;color:#fff;margin-top:0">
+      <div style="font-size:14px;font-weight:600;color:rgba(255,255,255,.6);margin-bottom:6px">🎉 Your Instant Estimate:</div>
+      <div id="instantCalcOfferNum" style="font-family:'Poppins',sans-serif;font-weight:900;font-size:52px;color:var(--red);line-height:1;margin-bottom:8px">£0</div>
+      <div id="instantCalcOfferDesc" style="font-size:14px;color:rgba(255,255,255,.7);margin-bottom:20px">For your iPhone</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:22px;text-align:left;background:rgba(255,255,255,.06);border-radius:10px;padding:14px 16px">
+        <div style="font-size:13px;color:rgba(255,255,255,.75)">✅ Free Royal Mail collection label</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.75)">✅ Same day bank transfer payment</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.75)">✅ No hidden fees or deductions</div>
+      </div>
+      <button onclick="acceptCalcOffer()" style="width:100%;padding:15px;background:var(--red);color:#fff;border:none;border-radius:12px;font-family:'Poppins',sans-serif;font-weight:700;font-size:16px;cursor:pointer;margin-bottom:10px;transition:.2s"
+        onmouseover="this.style.background='#c73652'" onmouseout="this.style.background='var(--red)'">
+        ✅ ACCEPT OFFER →
+      </button>
+      <button onclick="document.getElementById('instantCalcResult').style.display='none';document.getElementById('instantCalcStep1').style.display='block'"
+        style="width:100%;padding:13px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.2);border-radius:12px;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;cursor:pointer">
+        🔄 Try Different Phone
+      </button>
+    </div>
+  </div>
+</section>
+
 <!-- GET OFFER FORM -->
 <section class="form-section" id="get-offer">
   <div class="section-label">Get Your Offer</div>
@@ -983,6 +1096,15 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
             <div id="partsMsg" style="display:none;margin-top:8px;padding:12px 14px;border-radius:8px;font-size:13px;font-family:'Poppins',sans-serif;font-weight:600;line-height:1.6;background:#FFF7ED;border:1.5px solid #FED7AA;color:#C2410C">⚠️ Non-genuine parts reduce offer value by 20-30%. Your offer will be adjusted accordingly.</div>
           </div>
 
+          <!-- ORIGINAL BOX -->
+          <div class="fg full" id="boxQuestion">
+            <label>Do you have the original box? <span style="color:var(--green);font-weight:700;text-transform:none;letter-spacing:0">+£3 bonus</span></label>
+            <div style="display:flex;gap:10px">
+              <button type="button" class="box-toggle-btn active" id="boxYesBtn" onclick="toggleOriginalBox('yes')">✓ Yes, I have it</button>
+              <button type="button" class="box-toggle-btn" id="boxNoBtn" onclick="toggleOriginalBox('no')">✗ No box</button>
+            </div>
+          </div>
+
           <!-- LIVE PRICE BOX -->
           <div class="fg full" id="livePriceBox" style="display:none">
             <div style="background:#F0FDF4;border:2px solid #22C55E;border-left:4px solid #16A34A;border-radius:12px;padding:16px 18px;font-family:'Poppins',sans-serif">
@@ -1097,6 +1219,11 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
             </select>
           </div>
 
+          <div class="fg full">
+            <label>How Much Are You Looking For? <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">(optional)</span></label>
+            <input type="number" name="askingPrice" min="0" placeholder="e.g. 120">
+          </div>
+
           <div class="legal-checks">
             <label class="legal-check">
               <input type="checkbox" id="legalAll">
@@ -1195,6 +1322,34 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
           <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;background:#fff0f3;border-radius:10px;border:1.5px solid #ffd6de;font-family:'Poppins',sans-serif;font-size:14px;font-weight:600;color:#1a1a2e">✅ Free Royal Mail tracked label</div>
         </div>
         <p style="font-size:12px;color:#6B7280;text-align:center;margin-top:10px">💡 PUKI Devices pays more and you never need to leave home!</p>
+      </div>
+
+      <!-- PART EXCHANGE BOX -->
+      <div id="pxBox" style="display:none;margin-top:20px;background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border:2px solid #3B82F6;border-radius:16px;padding:22px 20px;text-align:center">
+        <div style="font-size:28px;margin-bottom:6px">📱🔄</div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:17px;color:#1E3A8A;margin-bottom:6px">Upgrade your iPhone!</div>
+        <div id="pxTagline" style="font-size:13px;color:#1D4ED8;margin-bottom:14px;line-height:1.5"></div>
+        <div style="background:#fff;border-radius:10px;padding:14px;margin-bottom:16px">
+          <div style="font-size:12px;color:#6B7280;font-family:'Poppins',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px">Your Total Value</div>
+          <div style="display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap">
+            <div style="text-align:center">
+              <div style="font-size:11px;color:#6B7280;margin-bottom:2px">Cash offer</div>
+              <div style="font-family:'Poppins',sans-serif;font-weight:900;font-size:22px;color:#1E2A3A">£<span id="pxCash">0</span></div>
+            </div>
+            <div style="font-size:20px;color:#6B7280">+</div>
+            <div style="text-align:center">
+              <div style="font-size:11px;color:#6B7280;margin-bottom:2px">Upgrade discount</div>
+              <div style="font-family:'Poppins',sans-serif;font-weight:900;font-size:22px;color:#2563EB">£<span id="pxDiscount">0</span> OFF</div>
+            </div>
+            <div style="font-size:20px;color:#6B7280">=</div>
+            <div style="text-align:center">
+              <div style="font-size:11px;color:#6B7280;margin-bottom:2px">Total value</div>
+              <div style="font-family:'Poppins',sans-serif;font-weight:900;font-size:22px;color:#15803D">£<span id="pxTotal">0</span></div>
+            </div>
+          </div>
+        </div>
+        <button onclick="goToSelling()" style="width:100%;padding:13px;background:#2563EB;color:#fff;border:none;border-radius:10px;font-family:'Poppins',sans-serif;font-weight:700;font-size:14px;cursor:pointer">See Available iPhones →</button>
+        <p style="font-size:11px;color:#93C5FD;margin-top:8px">Discount applied automatically when you enquire</p>
       </div>
 
       <!-- GRADING CONTRACT -->
@@ -1388,6 +1543,19 @@ footer{background:var(--dark);color:rgba(255,255,255,.5);padding:40px 24px}
 // Stored for accept button
 let submittedData=null,pukiOfferPrice=0;
 let battery_warning_flag=false,icloud_warning_flag=false,is_duplicate_flag=false,is_blacklisted_flag=false,icloud_locked_flag=false,faulty_flag=false,non_genuine_flag=false,network_locked_flag=false;
+let hasOriginalBox=true;
+
+// Mobile menu toggle
+function toggleMobileMenu(){const m=document.getElementById('mobileMenu');m.classList.toggle('open')}
+document.addEventListener('click',function(e){const m=document.getElementById('mobileMenu');if(m&&m.classList.contains('open')&&!e.target.closest('nav')&&!e.target.closest('.mobile-menu')){m.classList.remove('open')}});
+
+// Original box toggle (+£3 bonus)
+function toggleOriginalBox(val){
+  hasOriginalBox = val==='yes';
+  document.getElementById('boxYesBtn').classList.toggle('active', hasOriginalBox);
+  document.getElementById('boxNoBtn').classList.toggle('active', !hasOriginalBox);
+  updateLivePrice();
+}
 const _formLoadedAt = new Date().toISOString();
 
 // Price calculator
@@ -1529,6 +1697,8 @@ document.getElementById('sellForm').addEventListener('submit',async function(e){
     parts_replaced:fd.get('parts_replaced')||'',
     network:fd.get('network')||'Unlocked',
     network_locked:network_locked_flag,
+    has_box:hasOriginalBox?'Yes':'No',
+    asking_price:fd.get('askingPrice')||'',
     tcs_agreed:true,
     submission_ip:submission_ip
   };
@@ -1592,6 +1762,7 @@ document.getElementById('sellForm').addEventListener('submit',async function(e){
       document.getElementById('gradingContract').style.display='block';
       document.getElementById('acceptSection').style.display='block';
       document.getElementById('formalitiesSection').style.display='block';
+      showPartExchange(data.model||'', pukiOfferPrice);
       startOfferTimer();
       // Lock price in Airtable for 24 hours
       const _now=new Date();
@@ -2052,7 +2223,7 @@ function updateLivePrice(){
   const mv=modelEl.value||'';
   const gr=gradeEl.value||'';
   if(prices[mv]&&gr&&prices[mv][gr]!==undefined){
-    val.textContent=prices[mv][gr];
+    val.textContent=prices[mv][gr]+(hasOriginalBox?3:0);
     box.style.display='block';
     document.getElementById('priceTrustBadges').style.display='flex';
   }else{
@@ -2220,6 +2391,66 @@ function acceptCookies(){
   }
 })();
 loadLivePrices();
+
+// ── INSTANT ESTIMATE WIDGET ──
+var _instantCalcModelLabel = '';
+var _instantCalcOfferAmount = 0;
+function calcOffer() {
+  var modelSel = document.getElementById('instantCalcModel');
+  var storageMult = parseFloat(document.getElementById('instantCalcStorage').value) || 1.08;
+  var conditionMult = parseFloat(document.getElementById('instantCalcCondition').value) || 0.85;
+  var battery = parseInt(document.getElementById('instantCalcBattery').value) || 85;
+  if (!modelSel.value) { alert('Please select your iPhone model first.'); return; }
+  var parts = modelSel.value.split('|');
+  _instantCalcModelLabel = parts[0];
+  var basePrice = parseInt(parts[1]) || 90;
+  var battAdj = battery >= 90 ? 1.05 : battery >= 80 ? 1.0 : battery >= 70 ? 0.90 : 0.75;
+  var offer = Math.round(basePrice * storageMult * conditionMult * battAdj / 5) * 5;
+  if (offer < 20) offer = 20;
+  _instantCalcOfferAmount = offer;
+  document.getElementById('instantCalcOfferNum').textContent = '£' + offer;
+  var condLabel = ['Excellent','Good','Fair'][[1.0,0.85,0.70].indexOf(conditionMult)] || 'Good';
+  document.getElementById('instantCalcOfferDesc').textContent = 'For your ' + _instantCalcModelLabel + ' (' + condLabel + ' condition, ' + battery + '% battery)';
+  document.getElementById('instantCalcStep1').style.display = 'none';
+  document.getElementById('instantCalcResult').style.display = 'block';
+}
+function acceptCalcOffer() {
+  var formSection = document.getElementById('get-offer');
+  if (formSection) formSection.scrollIntoView({ behavior: 'smooth' });
+  var modelField = document.querySelector('#sellForm select[name="model"]');
+  if (modelField) { modelField.value = _instantCalcModelLabel; updateLivePrice(); }
+}
+
+// ── PART EXCHANGE ──
+function showPartExchange(model, cashOffer) {
+  const m = (model || '').toLowerCase();
+  let discount = 0;
+  let upgradeModel = '';
+  if (m.includes('iphone 12')) { discount = 20; upgradeModel = 'iPhone 13'; }
+  else if (m.includes('iphone 13')) { discount = 25; upgradeModel = 'iPhone 14'; }
+  else if (m.includes('iphone 14')) { discount = 30; upgradeModel = 'iPhone 15'; }
+  else if (m.includes('iphone 15')) { discount = 35; upgradeModel = 'a newer iPhone'; }
+  if (!discount) return;
+  const pxBox = document.getElementById('pxBox');
+  if (!pxBox) return;
+  document.getElementById('pxCash').textContent = cashOffer;
+  document.getElementById('pxDiscount').textContent = discount;
+  document.getElementById('pxTotal').textContent = cashOffer + discount;
+  document.getElementById('pxTagline').textContent = 'Trade your ' + model + ' AND get £' + discount + ' off ' + upgradeModel + '!';
+  pxBox._discount = discount;
+  pxBox._model = model;
+  pxBox.style.display = 'block';
+}
+function goToSelling() {
+  const pxBox = document.getElementById('pxBox');
+  const discount = pxBox ? pxBox._discount : 0;
+  const model = pxBox ? pxBox._model : '';
+  if (discount) {
+    localStorage.setItem('pxDiscount', discount);
+    localStorage.setItem('pxModel', model);
+  }
+  window.location.href = 'https://pukidevices.co.uk';
+}
 </script>
 </body>
 </html>
